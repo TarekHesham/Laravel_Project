@@ -4,6 +4,7 @@
 label {
     font-size: 13px;
     font-weight: 600;
+    /* text-transform: capitalize; */
 }
 button {
     font-weight: 600;
@@ -11,4 +12,23 @@ button {
 .error {
     font-size: 13px;
     color: red;
+}
+.form-role {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 6rem;
+    gap: 1rem;
+}
+.form-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bs-light-bg-subtle);
+    border: var(--bs-border-width) var(--bs-border-style) transparent;
+}
+.form-card:has(input[type="radio"]:checked) {
+    border-color: black;
+}
+.form-card:hover {
+    border-color: var(--bs-border-color);
 }

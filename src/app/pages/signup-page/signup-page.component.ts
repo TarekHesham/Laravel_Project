@@ -11,6 +11,7 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators, AbstractContro
 })
 export class SignupPageComponent {
   signupForm = new FormGroup({
+    role: new FormControl('candidate', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
@@ -29,6 +30,9 @@ export class SignupPageComponent {
   get confirmPassword() {
     return this.signupForm.controls['confirmPassword'];
   }
+  get role() {
+    return this.signupForm.controls['role'];
+  }
   confirmPasswordValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const value = control.value;
@@ -41,18 +45,10 @@ export class SignupPageComponent {
 
 
   submit() {
-    if (this.name.errors) {
+    this.signupForm.markAllAsTouched();
+    if (this.name.errors || this.email.errors || this.password.errors || this.confirmPassword.errors || this.role.errors) {
       return;
     }
-    if (this.email.errors) {
-      return;
-    }
-    if (this.password.errors) {
-      return;
-    }
-    if (this.confirmPassword.errors) {
-      return;
-    } 
     console.log("submit", this.signupForm.value);
   }
   visited(control: AbstractControl): boolean {
