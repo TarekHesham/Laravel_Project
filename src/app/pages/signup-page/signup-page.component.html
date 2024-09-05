@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="container">
+    <div class="form-wrapper border rounded p-3 mx-auto mt-4">
+        <form class="mt-4" [formGroup]="signupForm" (ngSubmit)="submit()">
+            <h1 class="mb-3">Create account</h1>
+            <p>Let's get started</p>
+            <div class="form-group mb-3">
+                <label for="name" class="text-capitalize">name</label>
+                <input class="form-control" type="text" name="name" id="name" formControlName="name" />
+                @if(visited(name) && name.errors?.['required'] ) {
+                    <span class="error">Name is required</span>
+                }
+            </div>
+            <div class="form-group mb-3">
+                <label for="email" class="text-capitalize">email</label>
+                <input class="form-control" type="email" name="email" id="email" formControlName="email"/>
+                @if(visited(email) && email.errors?.['required'] ) {
+                    <span class="error">Email is required</span>
+                }
+                @if(visited(email) && email.errors?.['email'] ) {
+                    <span class="error">Please enter an email</span>
+                }
+            </div>
+            <div class="form-group mb-3">
+                <label for="password" class="text-capitalize">password</label>
+                <input class="form-control" type="password" name="password" id="password" formControlName="password"/>
+                @if(visited(password) && password.errors?.['required'] ) {
+                    <span class="error">Password is required</span>
+                }
+            </div>
+            <div class="form-group mb-3">
+                <label for="confirm-password" class="text-capitalize">confirm password</label>
+                <input class="form-control" type="password" name="confirm-password" id="confirm-password" formControlName="confirmPassword"/>
+                @if(visited(confirmPassword) && confirmPassword.errors?.['required'] ) {
+                    <span class="error">Required</span>
+                }
+                @if(visited(confirmPassword) && confirmPassword.errors?.['notMatching'] ) {
+                    <span class="error">Passwords does not match</span>
+                }
+            </div>
+            <div class="form-group mb-3">
+                <button class="btn btn-primary w-100 p-2">sign up</button>
+            </div>
+        </form>
+    </div>
+</div>

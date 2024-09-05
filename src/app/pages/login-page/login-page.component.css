@@ -1,0 +1,14 @@
+.form-wrapper {
+    width: 600px;
+}
+label {
+    font-size: 13px;
+    font-weight: 600;
+}
+button {
+    font-weight: 600;
+}
+.error {
+    font-size: 13px;
+    color: red;
+}
