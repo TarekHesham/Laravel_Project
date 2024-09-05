@@ -1,9 +1,16 @@
 import { Routes } from '@angular/router';
+import { CardDetailsComponent } from './components/card-details/card-details.component';
+import { HeaderComponent } from './components/header/header.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { AdminDashboardPageComponent } from './pages/admin-dashboard-page/admin-dashboard-page.component';
 
 export const routes: Routes = [
+    
+    {
+        path: 'job-details',
+        component: CardDetailsComponent
+    },
     {
         path: 'login',
         component: LoginPageComponent,
