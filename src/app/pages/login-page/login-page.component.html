@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="container">
+    <div class="form-wrapper border rounded p-3 mx-auto mt-4">
+        <form class="mt-4" [formGroup]="loginForm" (ngSubmit)="submit()">
+            <h1 class="mb-3">Welcome back</h1>
+            <div class="form-group mb-3">
+                <label for="email" class="text-capitalize">email</label>
+                <input class="form-control" type="email" name="email" id="email" formControlName="email"/>
+                @if(visited(email) && email.errors?.['required'] ) {
+                    <span class="error">Email is required</span>
+                }
+                @if(visited(email) && email.errors?.['email'] ) {
+                    <span class="error">Please enter an email</span>
+                }
+            </div>
+            <div class="form-group mb-3">
+                <label for="password" class="text-capitalize">password</label>
+                <input class="form-control" type="password" name="password" id="password" formControlName="password"/>
+                @if(visited(password) && password.errors?.['required'] ) {
+                    <span class="error">Password is required</span>
+                }
+            </div>
+            <div class="form-group mb-3">
+                <label for="remember-me" class="me-2">Remember me</label>
+                <input type="checkbox" name="remember-me" id="remember-me" formControlName="rememberMe">
+            </div>
+            <div class="form-group mb-3">
+                <button class="btn btn-primary w-100 p-2">log in</button>
+            </div>
+        </form>
+    </div>
+</div>
