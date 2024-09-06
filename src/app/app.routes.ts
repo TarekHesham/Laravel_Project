@@ -4,6 +4,7 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CreateJobPostComponent } from './pages/create-job-post/create-job-post.component';
+import { EditJobPostComponent } from './pages/edit-job-post/edit-job-post.component';
 
 export const routes: Routes = [
     {
@@ -24,6 +25,11 @@ export const routes: Routes = [
         path: 'post-job',
         component: CreateJobPostComponent,
         title: 'Create Job',
-
+    }
+    ,
+    {
+        path: 'edit-post',
+        component: EditJobPostComponent,
+        title: 'Edit Post',
     }
 ];
