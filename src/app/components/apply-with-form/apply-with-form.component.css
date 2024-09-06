@@ -1,0 +1,8 @@
+.styling {
+    border: 1px solid rgb(232, 232, 232);
+    box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 5%);
+    background-color: white;
+    width: 50%;
+    margin: 0 auto;
+    padding: 2rem;
+}
