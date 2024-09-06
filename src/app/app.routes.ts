@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { HeaderComponent } from './components/header/header.component';
+import { CreateJobPostComponent } from './pages/create-job-post/create-job-post.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { AdminDashboardPageComponent } from './pages/admin-dashboard-page/admin-dashboard-page.component';
@@ -20,6 +21,11 @@ export const routes: Routes = [
         path: 'signup',
         component: SignupPageComponent,
         title: 'signup',
+    },
+    {
+        path: 'post-job',
+        component: CreateJobPostComponent,
+        title: 'Create Job',
     },
     {
         path: 'admin-dashboard',
