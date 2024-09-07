@@ -6,6 +6,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { AdminDashboardPageComponent } from './pages/admin-dashboard-page/admin-dashboard-page.component';
 import { EditJobPostComponent } from './pages/edit-job-post/edit-job-post.component';
+import { CandidateProfileComponent } from './pages/candidate-profile/candidate-profile.component';
 
 
 export const routes: Routes = [
@@ -43,6 +44,9 @@ export const routes: Routes = [
         path: 'apply-for-job',
         component: ApplyForJobComponent
     },
-
+    {
+        path: 'candidate-profile',
+        component: CandidateProfileComponent
+    }
 
 ];
