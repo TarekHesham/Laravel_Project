@@ -3,6 +3,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { ApplyForJobComponent } from './pages/apply-for-job/apply-for-job.component';
+import { CandidateProfileComponent } from './pages/candidate-profile/candidate-profile.component';
 
 
 export const routes: Routes = [
@@ -24,6 +25,9 @@ export const routes: Routes = [
         path: 'apply-for-job',
         component: ApplyForJobComponent
     },
-
+    {
+        path: 'candidate-profile',
+        component: CandidateProfileComponent
+    }
 
 ];
