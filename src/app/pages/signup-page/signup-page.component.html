@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="container">
     <div class="form-wrapper border rounded p-3 mx-auto mt-4">
         <form class="mt-4" [formGroup]="signupForm" (ngSubmit)="submit()">
@@ -40,7 +39,7 @@
                 <label for="confirm-password">Confirm password</label>
                 <input class="form-control" type="password" name="confirm-password" id="confirm-password" formControlName="confirmPassword"/>
                 @if(visited(confirmPassword) && confirmPassword.errors?.['required'] ) {
-                    <span class="error">Required</span>
+                    <span class="error">Confirm password Required</span>
                 }
                 @if(visited(confirmPassword) && confirmPassword.errors?.['notMatching'] ) {
                     <span class="error">Passwords does not match</span>
