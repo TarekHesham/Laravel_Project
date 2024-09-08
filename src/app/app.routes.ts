@@ -5,6 +5,9 @@ import { CardDetailsComponent } from './components/card-details/card-details.com
 import { HeaderComponent } from './components/header/header.component';
 import { CreateJobPostComponent } from './pages/create-job-post/create-job-post.component';
 import { EditJobPostComponent } from './pages/edit-job-post/edit-job-post.component';
+import { ApplyForJobComponent } from './pages/apply-for-job/apply-for-job.component';
+import { CandidateProfileComponent } from './pages/candidate-profile/candidate-profile.component';
+
 
 export const routes: Routes = [
     {
@@ -31,5 +34,15 @@ export const routes: Routes = [
         path: 'edit-post',
         component: EditJobPostComponent,
         title: 'Edit Post',
+    },
+    {
+        path: 'apply-for-job',
+        component: ApplyForJobComponent
+    },
+    {
+        path: 'candidate-profile',
+        component: CandidateProfileComponent
     }
+
 ];
+
