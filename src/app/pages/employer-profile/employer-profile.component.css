@@ -26,18 +26,25 @@ img {
 }
 .settings_tabs{
     background-color: white;
-    border: 1px solid rgb(232, 232, 232);
-    padding-top: 2rem;
+    border-top: 1px solid rgb(232, 232, 232);
+    border-left: 1px solid rgb(232, 232, 232);
+    padding: 2rem 2rem 0 2rem;
 }
 
 .show_tab{
     background-color: white;
-    border: 1px solid rgb(232, 232, 232);
+    border-top: 1px solid rgb(232, 232, 232);
+    border-right: 1px solid rgb(232, 232, 232);
 }
 
 
 a{
     color:  rgb(176, 176, 176);
+    padding: 0px;
+}
+
+li{
+    padding-top: 15px;
 }
 
 a::before{
@@ -49,4 +56,9 @@ a::before{
 a:hover::before, a.active::before, a.active{
     border-color: blue;
     color: blue !important;
+}
+
+h2{
+    font-size: 900;
+    font-weight: bold;
 }

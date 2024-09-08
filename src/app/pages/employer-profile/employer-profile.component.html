@@ -1,6 +1,6 @@
 <div class="info">
     <img src="https://picsum.photos/200" alt="">
-    <h3 class="text-center">'Employer Name'</h3>
+    <h3 class="text-center">Employer Name</h3>
 </div>
 
 
@@ -16,7 +16,7 @@
                 <a class="nav-link" [class.active]=" selectedTab == 'postedJobs' " id="postedJobs" (click)="selectedTab = 'postedJobs'" routerLink="/posted-jobs">Posted Jobs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Job analytics</a>
+                <a class="nav-link" [class.active]=" selectedTab == 'reviewApplications' " id="reviewApplications" (click)="selectedTab = 'reviewApplications'" routerLink="/review-applications">Review Applications</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/post-job">Post a new job</a>
@@ -30,6 +30,9 @@
         }
         @else if (selectedTab == 'postedJobs') {
             <app-posted-jobs></app-posted-jobs>
+        }
+        @else if (selectedTab == 'reviewApplications') {
+            <app-review-applications></app-review-applications>
         }
 
     </div>
