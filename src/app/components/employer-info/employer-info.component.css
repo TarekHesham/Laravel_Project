@@ -1,0 +1,15 @@
+.employer_info{
+    margin-top: 2rem;
+    /* border: 2px solid rgb(211, 211, 211); */
+    border-radius: 8px;
+    padding: 10px;
+    width: 90%;
+}
+
+.label{
+    color:  rgb(136, 135, 135) ;
+}
+
+.data{
+    font-weight: bold;
+}
