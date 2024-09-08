@@ -2,3 +2,14 @@
     padding: 3%;
     height: 100%;
 }
+
+.main_label{
+    background-color: rgb(170, 172, 174);
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+    color: white;
+    font-size: large;
+}
