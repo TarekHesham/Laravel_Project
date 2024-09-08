@@ -1,7 +1,11 @@
 main {
     display: grid;
-    grid-template-columns: 10rem 1fr;
+    grid-template-columns: 12rem 1fr;
     align-items: start;
+}
+.content {
+    max-width: 100dvw;
+    overflow-x: scroll;
 }
 @media (max-width: 768px) { 
     main {

@@ -1,17 +1,19 @@
 <h1>
     Posts
 </h1>
-<div class="border rounded-1 grid mt-2 shadow p-0 bg-white">
-    <div class="table-header border-bottom p-2">
-        <span>job title</span>
-        <span>location</span>
-        <span>work type</span>
-        <span>employer</span>
-        <span>created at</span>
-        <span>status</span>
-        <span>controls</span>
+<div class="grid mt-2 shadow p-3 bg-white border rounded-1">
+    <div class="table-header">
+        <div class="table-row">
+            <span>job title</span>
+            <span>location</span>
+            <span>work type</span>
+            <span>employer</span>
+            <span>created at</span>
+            <span>status</span>
+            <span>controls</span>
+        </div>
     </div>
-    <div class="table-body p-2 mt-2">
+    <div class="table-body">
         <div class="table-row">
             <span>{{jobTitle}}</span>
             <span>{{location}}</span>
@@ -30,7 +32,19 @@
             <span>{{workType}}</span>
             <span>{{employer}}</span>
             <span>{{createdAt}}</span>
-            <span class="badge bg-secondary p-2">{{status}}</span>
+            <span class="badge bg-success p-2">{{status}}</span>
+            <div class="controls">
+                <button class="btn btn-success">Accept</button>
+                <button class="btn btn-danger">Reject</button>
+            </div>
+        </div>
+        <div class="table-row">
+            <span>{{jobTitle}}</span>
+            <span>{{location}}</span>
+            <span>{{workType}}</span>
+            <span>{{employer}}</span>
+            <span>{{createdAt}}</span>
+            <span class="badge bg-danger p-2">{{status}}</span>
             <div class="controls">
                 <button class="btn btn-success">Accept</button>
                 <button class="btn btn-danger">Reject</button>

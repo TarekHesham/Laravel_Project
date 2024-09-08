@@ -6,6 +6,7 @@
     display: grid;
     grid-template-columns: 1fr repeat(6, max-content);
     column-gap: 2rem;
+    overflow-x: scroll;
 }
 .table-body, .table-header, .table-row {
     display: grid;
@@ -21,4 +22,9 @@
 }
 .table-row {
     align-items: center;
+}
+
+.table-header .table-row, .table-body .table-row:not(:last-child) {
+    border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+    padding: 0.5rem 0;
 }
