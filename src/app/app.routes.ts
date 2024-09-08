@@ -8,13 +8,13 @@ import { AdminDashboardPageComponent } from './pages/admin-dashboard-page/admin-
 import { EditJobPostComponent } from './pages/edit-job-post/edit-job-post.component';
 import { CandidateProfileComponent } from './pages/candidate-profile/candidate-profile.component';
 import { EmployerProfileComponent } from './pages/employer-profile/employer-profile.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 export const routes: Routes = [
-    
     {
-        path: 'job-details',
-        component: CardDetailsComponent
+        path: '',
+        component: HomeComponent
     },
     {
         path: 'login',
