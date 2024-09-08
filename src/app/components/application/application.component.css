@@ -1,0 +1,28 @@
+.application_content{
+    height: 130px;
+    border-radius: 10px;
+    width: 90%;
+    margin: auto;
+    box-shadow: 1px 1px 8px -3px black;
+    justify-content: space-around;
+    align-items: center;
+}
+
+img {
+    /* width: 50%; */
+    height: 50%;
+    border-radius: 50%;
+    display: block;
+    box-shadow: 5px 5px 5px 3px rgba(113, 113, 113, 0.05);
+}
+
+.image{
+    height: 100%;
+
+}
+
+.application_content:hover{
+    background-color: rgb(227, 227, 227);
+    transition: 0.3s;
+}
+
