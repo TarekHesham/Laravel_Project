@@ -1,1 +1,6 @@
-<p>admin-dashboard-page works!</p>
+<main>
+    <app-admin-sidebar (componentEmiiter)="changeComponent($event)"></app-admin-sidebar>
+    <div class="mx-3 mt-3">
+        <ng-container *ngComponentOutlet="getCurrentComponent()"/>
+    </div>
+</main>
