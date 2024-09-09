@@ -1,26 +1,33 @@
-<div class="container mt-5">
-    <form class="d-flex mb-4" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search for jobs" aria-label="Search">
-        <button class="btn btn-success" type="submit">Search</button>
-    </form>
-
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        <div class="col">
-            <div class="card h-100">
-                <img src="https://picsum.photos/200" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Job Category</li>
-                    <li class="list-group-item">Job Type</li>
-                </ul>
-                <div class="card-body">
-                    <a routerLink="job-details" class="btn btn-outline-secondary">More Details...</a>
-                </div>
-            </div>
-        </div>
+<div class="job-card">
+    <div class="card-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Company Logo" class="logo">
+        <!-- Posted at -->
+        <span class="date">7 July</span>
     </div>
+
+    <h3 class="job-title">job Title</h3>
+    <a href="#" class="replies">3 replies</a>
+
+    <div class="skills">
+        <span class="skill">skill 1</span>
+        <span class="skill">skill 2</span>
+        <span class="skill">skill 3</span>
+    </div>
+
+    <p class="location">Country, City</p>
+    <p class="description">
+        We want our devices and services to be more than just beautiful, but also useful and intuitive. To achieve this goal ...
+    </p>
+
+    @if(page == 'employer_profile'){
+        <div class="card-buttons">
+            <button class="btn btn-success">Edit</button>
+            <button class="btn btn-danger">Cancel</button>
+        </div>
+    }
+    @else if (page == 'home_posts') {
+        <div class="card-buttons">
+            <button class="btn btn-success">More Details</button>
+        </div>
+    }
 </div>
