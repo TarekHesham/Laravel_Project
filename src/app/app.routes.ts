@@ -10,7 +10,7 @@ import { EmployerProfileComponent } from './pages/employer-profile/employer-prof
 import { HomeComponent } from './pages/home/home.component';
 import { ApplicationComponent } from './components/application/application.component';
 import { ReviewApplicationsComponent } from './pages/review-applications/review-applications.component';
-
+import { AdminDashboardPageComponent } from './pages/admin-dashboard-page/admin-dashboard-page.component';
 
 export const routes: Routes = [
     {
@@ -27,6 +27,11 @@ export const routes: Routes = [
         component: SignupPageComponent,
         title: 'signup',
     },
+    {
+        path: 'admin-dashboard',
+        component: AdminDashboardPageComponent,
+        title: 'dashboard'
+    }
     {
         path: 'job-details',
         component: CardDetailsComponent
@@ -61,4 +66,3 @@ export const routes: Routes = [
     }
 
 ];
-

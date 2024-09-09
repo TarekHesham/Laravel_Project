@@ -1,0 +1,35 @@
+.sidebar {
+    min-height: 100dvh;
+    border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+    max-width: 100dvw;
+}
+ul {
+    list-style-type: none;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+}
+li {
+    cursor: pointer;
+    padding: 0.5rem;
+    text-transform: capitalize;
+}
+li:hover {
+    background-color: var(--bs-gray-300);
+}
+
+@media (max-width: 768px) { 
+    .sidebar {
+        min-height: auto;
+        width: 100%;
+        border-right: none;
+        border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+
+    }
+    ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
