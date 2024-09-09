@@ -10,10 +10,6 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  getJobs(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/jobs`, this.getAuthHeaders());
-  }
-
   changeJobStatus(jobId: number, status: 'accepted' | 'rejected' ): Observable<any> {
     return this.http.put(`${this.baseUrl}/jobs/${jobId}/status`, { status }, this.getAuthHeaders());
   }
@@ -22,6 +18,10 @@ export class AdminService {
     return this.http.delete(`${this.baseUrl}/jobs/${jobId}`, this.getAuthHeaders());
   }
 
+  getComments(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/comments`, this.getAuthHeaders());
+  }
+  
   deleteComment(commentId: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/comments/${commentId}`, this.getAuthHeaders());
   }
