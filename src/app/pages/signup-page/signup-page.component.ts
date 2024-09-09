@@ -79,8 +79,8 @@ export class SignupPageComponent {
       },
       (error) => {
         // errors handler
-        console.error('Register failed:', error);
-        this.errorMessages = error.error.message || 'Register failed';
+        console.error('Register failed:', error.error.errors);
+        this.errorMessages = error.error.errors || 'Register failed';
       }
     );
   }
