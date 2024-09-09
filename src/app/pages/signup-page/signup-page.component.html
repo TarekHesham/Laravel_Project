@@ -17,6 +17,9 @@
                 @if(visited(name) && name.errors?.['required'] ) {
                     <span class="error">Name is required</span>
                 }
+                @if(errorMessages && errorMessages['name']) {
+                    <span class="error">{{errorMessages['name']}}</span>
+                }
             </div>
             <div class="form-group mb-3">
                 <label for="email">Email</label>
@@ -27,12 +30,18 @@
                 @if(visited(email) && email.errors?.['email'] ) {
                     <span class="error">Please enter an email</span>
                 }
+                @if(errorMessages && errorMessages['email']) {
+                    <span class="error">{{errorMessages['email']}}</span>
+                }
             </div>
             <div class="form-group mb-3">
                 <label for="password">Password</label>
                 <input class="form-control" type="password" name="password" id="password" formControlName="password"/>
                 @if(visited(password) && password.errors?.['required'] ) {
                     <span class="error">Password is required</span>
+                }
+                @if(errorMessages && errorMessages['password']) {
+                    <span class="error">{{errorMessages['password']}}</span>
                 }
             </div>
             <div class="form-group mb-3">
