@@ -29,6 +29,10 @@ export class GlobalService {
     });
   }
 
+  locations(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/locations`, this.getAuthHeaders());
+  }
+
   private getAuthHeaders(): { headers: HttpHeaders } | undefined {
     const token = localStorage.getItem('token');
     if (!token) {
