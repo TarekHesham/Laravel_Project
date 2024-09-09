@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-job-form',
@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './job-form.component.css'
 })
 export class JobFormComponent {
+
+  @Input () page ='';
 
 }
