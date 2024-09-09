@@ -2,13 +2,13 @@ main {
     display: grid;
     grid-template-columns: 12rem 1fr;
     align-items: start;
-    overflow: hidden;
+    overflow: auto;
     max-height: 100dvh;
 }
 .content {
     max-width: 100dvw;
     min-height: 100dvh;
-    overflow-x: scroll;
+    overflow: auto;
 }
 @media (max-width: 768px) { 
     main {
