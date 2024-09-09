@@ -16,9 +16,6 @@
                 <a class="nav-link" [class.active]=" selectedTab == 'postedJobs' " id="postedJobs" (click)="selectedTab = 'postedJobs'" routerLink="/posted-jobs">Posted Jobs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [class.active]=" selectedTab == 'reviewApplications' " id="reviewApplications" (click)="selectedTab = 'reviewApplications'" routerLink="/review-applications">Review Applications</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" routerLink="/post-job">Post a new job</a>
             </li>
         </ul>
@@ -31,10 +28,6 @@
         @else if (selectedTab == 'postedJobs') {
             <app-posted-jobs></app-posted-jobs>
         }
-        @else if (selectedTab == 'reviewApplications') {
-            <app-review-applications></app-review-applications>
-        }
-
     </div>
 </div>
 
