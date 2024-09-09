@@ -1,10 +1,9 @@
 .form-wrapper {
-    width: 600px;
+    max-width: 600px;
 }
 label {
     font-size: 13px;
     font-weight: 600;
-    /* text-transform: capitalize; */
 }
 button {
     font-weight: 600;
@@ -15,8 +14,7 @@ button {
 }
 .form-role {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 6rem;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     gap: 1rem;
 }
 .form-card {
@@ -25,6 +23,7 @@ button {
     justify-content: center;
     background-color: var(--bs-light-bg-subtle);
     border: var(--bs-border-width) var(--bs-border-style) transparent;
+    height: 4rem;
 }
 .form-card:has(input[type="radio"]:checked) {
     border-color: black;
