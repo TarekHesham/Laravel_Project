@@ -11,5 +11,17 @@ import { MultiSelectComponent } from '../multi-select/multi-select.component';
 export class JobFormComponent {
 
   @Input () page ='';
+  skills = [{
+    "id": 1,
+    "name": "HTML"
+  }];
+  benefits = [];
+  categories = [];
+  location = [];
 
+  autoComplete(event:any){
+    
+    console.log(event);
+    
+  }
 }

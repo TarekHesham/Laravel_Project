@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import Choices from 'choices.js';
 
 @Component({
@@ -23,5 +23,8 @@ export class MultiSelectComponent {
       placeholderValue: 'Select all options'
     });
   }
+
+  @Input () options!:any[];
+  @Input() options_type = '';
 
 }
