@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="container">
     <div class="form-wrapper border rounded p-3 mx-auto mt-4">
         <form class="mt-4" [formGroup]="loginForm" (ngSubmit)="submit()">
@@ -24,6 +23,11 @@
                 <label for="remember-me" class="me-2">Remember me</label>
                 <input type="checkbox" name="remember-me" id="remember-me" formControlName="rememberMe">
             </div>
+            @if(errorMessages) {
+                <div class="form-group mb-3">
+                    <span class="error">{{ errorMessages }}</span>
+                </div>
+            }
             <div class="form-group mb-3">
                 <button class="btn btn-primary w-100 p-2">log in</button>
             </div>
