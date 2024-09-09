@@ -12,7 +12,7 @@ main {
 .content {
     max-width: 100dvw;
     min-height: 100dvh;
-    overflow-x: scroll;
+    overflow: auto;
 }
 @media (max-width: 768px) { 
     main {
