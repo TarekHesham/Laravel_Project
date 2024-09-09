@@ -8,6 +8,8 @@ import { ApplyForJobComponent } from './pages/apply-for-job/apply-for-job.compon
 import { CandidateProfileComponent } from './pages/candidate-profile/candidate-profile.component';
 import { EmployerProfileComponent } from './pages/employer-profile/employer-profile.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ApplicationComponent } from './components/application/application.component';
+import { ReviewApplicationsComponent } from './pages/review-applications/review-applications.component';
 
 
 export const routes: Routes = [
@@ -53,7 +55,10 @@ export const routes: Routes = [
         component: EmployerProfileComponent,
         title: 'Employer Profile',
     },
-
+    {
+        path: 'applications',
+        component: ReviewApplicationsComponent
+    }
 
 ];
 

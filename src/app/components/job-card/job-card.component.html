@@ -6,7 +6,7 @@
     </div>
 
     <h3 class="job-title">job Title</h3>
-    <a href="#" class="replies">3 replies</a>
+    <a routerLink="/applications" class="replies">3 replies</a>
 
     <div class="skills">
         <span class="skill">skill 1</span>
@@ -21,13 +21,13 @@
 
     @if(page == 'employer_profile'){
         <div class="card-buttons">
-            <button class="btn btn-success">Edit</button>
+            <button class="btn btn-success" routerLink="/edit-post">Edit</button>
             <button class="btn btn-danger">Cancel</button>
         </div>
     }
     @else if (page == 'home_posts') {
         <div class="card-buttons">
-            <button class="btn btn-success">More Details</button>
+            <button class="btn btn-success" routerLink="/job-details">More Details</button>
         </div>
     }
 </div>
