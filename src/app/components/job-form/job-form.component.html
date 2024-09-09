@@ -47,37 +47,7 @@
     <!-- Skills -->
     <div class="mb-3">
         <label class="form-label main_label">Skills</label>
-        <app-multi-select></app-multi-select>
-            <!-- <div class="row px-3">
-                <div class="form-check col-6">
-                    <input class="form-check-input" type="checkbox" id="HTML" value="HTML">
-                    <label class="form-check-label" for="HTML">HTML</label>
-                </div>
-                <div class="form-check col-6">
-                    <input class="form-check-input" type="checkbox" id="CSS3" value="CSS3">
-                    <label class="form-check-label" for="CSS3">CSS3</label>
-                </div>
-            </div>
-            <div class="row px-3">
-                <div class="form-check col-6">
-                    <input class="form-check-input" type="checkbox" id="JavaScript" value="JavaScript">
-                    <label class="form-check-label" for="JavaScript">JavaScript</label>
-                </div>
-                <div class="form-check col-6">
-                    <input class="form-check-input" type="checkbox" id="Angular" value="Angular">
-                    <label class="form-check-label" for="Angular">Angular</label>
-                </div>
-            </div>
-            <div class="row px-3">
-                <div class="form-check col-6">
-                    <input class="form-check-input" type="checkbox" id="PHP" value="PHP">
-                    <label class="form-check-label" for="PHP">PHP</label>
-                </div>
-                <div class="form-check col-6">
-                    <input class="form-check-input" type="checkbox" id="Laravel" value="Laravel">
-                    <label class="form-check-label" for="Laravel">Laravel</label>
-                </div>
-            </div> -->
+        <app-multi-select options_type ="skills" (keyup)="autoComplete($event)" [options]="skills"></app-multi-select>
     </div>
 
     <!-- Categories -->
