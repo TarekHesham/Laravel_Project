@@ -2,6 +2,8 @@ main {
     display: grid;
     grid-template-columns: 12rem 1fr;
     align-items: start;
+    overflow: hidden;
+    max-height: 100dvh;
 }
 .content {
     max-width: 100dvw;
