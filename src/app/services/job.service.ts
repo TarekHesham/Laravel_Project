@@ -11,15 +11,15 @@ export class JobService {
   constructor(private http: HttpClient) { }
 
   getJobs(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/jobs`, this.getAuthHeaders(true));
+    return this.http.get(`${this.baseUrl}/jobs`, this.getAuthHeaders());
   }
 
   getJobById(jobId: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/jobs/${jobId}`, this.getAuthHeaders(true));
+    return this.http.get(`${this.baseUrl}/jobs/${jobId}`, this.getAuthHeaders());
   }
 
   getJobBySlug(jobSlug: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/job/${jobSlug}`, this.getAuthHeaders(true));
+    return this.http.get(`${this.baseUrl}/job/${jobSlug}`, this.getAuthHeaders());
   }
 
   createJob(jobData: any): Observable<any> {
@@ -34,14 +34,10 @@ export class JobService {
     return this.http.delete(`${this.baseUrl}/jobs/${jobId}`, this.getAuthHeaders());
   }
 
-  private getAuthHeaders(logout = false): { headers: HttpHeaders } | undefined {
+  private getAuthHeaders(): { headers: HttpHeaders } | undefined {
     const token = localStorage.getItem('token');
     if (!token) {
       throw new Error('Missing token...');
-    }
-    
-    if (logout) {
-      localStorage.removeItem('token');
     }
     return token ? { headers: new HttpHeaders({ 'Authorization': token }) } : undefined;
   }
