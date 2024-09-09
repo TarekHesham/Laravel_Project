@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { JobCardComponent } from '../job-card/job-card.component';
 
+
 @Component({
   selector: 'app-posted-jobs',
   standalone: true,

@@ -9,5 +9,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './job-card.component.css'
 })
 export class JobCardComponent {
+  page: string = 'employer_profile';
 
 }
