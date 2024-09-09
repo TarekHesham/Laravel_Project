@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { AdminDashboardPageComponent } from './pages/admin-dashboard-page/admin-dashboard-page.component';
 import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { CreateJobPostComponent } from './pages/create-job-post/create-job-post.component';
 import { EditJobPostComponent } from './pages/edit-job-post/edit-job-post.component';
@@ -27,6 +28,11 @@ export const routes: Routes = [
         component: SignupPageComponent,
         title: 'signup',
     },
+    {
+        path: 'admin-dashboard',
+        component: AdminDashboardPageComponent,
+        title: 'dashboard'
+    }
     {
         path: 'job-details',
         component: CardDetailsComponent
@@ -61,4 +67,3 @@ export const routes: Routes = [
     }
 
 ];
-
