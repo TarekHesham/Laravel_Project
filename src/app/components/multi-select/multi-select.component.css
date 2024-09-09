@@ -1,0 +1,9 @@
+/* Add styles specific to the multiselect dropdown */
+.choices__inner {
+    border-radius: 0.375rem; /* Match Bootstrap input border radius */
+}
+
+.choices__list--dropdown {
+    border-radius: 0.375rem;
+    border-color: #ced4da; /* Match Bootstrap's default input border color */
+}

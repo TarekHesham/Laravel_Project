@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { MultiSelectComponent } from '../multi-select/multi-select.component';
 
 @Component({
   selector: 'app-job-form',
   standalone: true,
-  imports: [],
+  imports: [MultiSelectComponent],
   templateUrl: './job-form.component.html',
   styleUrl: './job-form.component.css'
 })
