@@ -31,7 +31,7 @@ export const routes: Routes = [
         path: 'admin-dashboard',
         component: AdminDashboardPageComponent,
         title: 'dashboard'
-    }
+    },
     {
         path: 'job-details',
         component: CardDetailsComponent
