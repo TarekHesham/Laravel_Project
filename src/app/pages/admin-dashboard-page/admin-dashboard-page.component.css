@@ -2,12 +2,11 @@ main {
     display: grid;
     grid-template-columns: 12rem 1fr;
     align-items: start;
-    overflow: auto;
-    max-height: 100dvh;
+    max-height: calc(100dvh - 57px);
 }
 .content {
     max-width: 100dvw;
-    min-height: 100dvh;
+    min-height: calc(100dvh - 57px);
     overflow: auto;
 }
 @media (max-width: 768px) { 
