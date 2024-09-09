@@ -1,6 +1,7 @@
 .sidebar {
     min-height: 100dvh;
     border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+    max-width: 100dvw;
 }
 ul {
     list-style-type: none;
