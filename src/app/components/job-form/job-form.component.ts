@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MultiSelectComponent } from '../multi-select/multi-select.component';
 import { GlobalService } from '../../services/global.service';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
@@ -13,6 +13,7 @@ import { FormGroup, FormControl, ReactiveFormsModule, Validators, ValidatorFn, A
 })
 export class JobFormComponent implements OnInit {
   @Input() page = '';
+  @Output() formSubmit = new EventEmitter<any>();  
   locations: any[] = [];
   selectedFiles: File[] = [];
   jobForm !: FormGroup;
@@ -20,7 +21,6 @@ export class JobFormComponent implements OnInit {
   constructor(private globalService: GlobalService){
     this.jobForm = new FormGroup({
       job_title: new FormControl('', [Validators.required]),
-      companyName: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       benefits: new FormControl([]),
       deadline: new FormControl(''),
@@ -31,7 +31,7 @@ export class JobFormComponent implements OnInit {
       salary_from: new FormControl(''),
       salary_to: new FormControl(''),
       experience_level: new FormControl('', [Validators.required]),
-      employer_images: new FormControl([]),
+      images: new FormControl([]),
     });
   }
 
@@ -51,10 +51,6 @@ export class JobFormComponent implements OnInit {
   // Getter methods for each form control
   get job_title() {
     return this.jobForm.get('job_title');
-  }
-
-  get companyName() {
-    return this.jobForm.get('companyName');
   }
 
   get description() {
@@ -97,8 +93,8 @@ export class JobFormComponent implements OnInit {
     return this.jobForm.get('experience_level');
   }
 
-  get employer_images() {
-    return this.jobForm.get('employer_images');
+  get images() {
+    return this.jobForm.get('images');
   }
 
 
@@ -113,7 +109,8 @@ export class JobFormComponent implements OnInit {
     if (this.jobForm.invalid) {
       return;
     }
-    console.log("submit", this.jobForm.value);
+    // Emit form data to parent component
+    this.formSubmit.emit(this.jobForm.value);
   }
 
 }

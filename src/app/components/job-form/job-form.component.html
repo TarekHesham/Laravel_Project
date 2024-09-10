@@ -11,17 +11,6 @@
             </div>
             }
     </div>
-    <div class="mb-3">
-        <label for="companyName" class="form-label">Company</label>
-        <input type="text" class="form-control" id="companyName"  formControlName="companyName">
-
-        <!-- validation -->
-        @if (companyName?.touched && companyName?.hasError('required')){
-            <div class="alert alert-danger  p-2">
-                <span>Company Name is Required</span>
-            </div>
-            }
-    </div>
 
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
@@ -109,7 +98,7 @@
 
     <div class="mb-3">
         <label class="form-label">Branding Elements</label>
-        <input type="file" class="form-control" multiple formControlName="employer_images">
+        <input type="file" class="form-control" multiple formControlName="images">
     </div>
 
     @if(page == 'create'){
