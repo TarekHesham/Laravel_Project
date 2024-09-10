@@ -39,6 +39,10 @@ export class GlobalService {
     return this.http.get(`${this.baseUrl}/skills`, this.getAuthHeaders());
   }
 
+  categories(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/categories`, this.getAuthHeaders());
+  }
+
   private getAuthHeaders(): { headers: HttpHeaders } | undefined {
     const token = localStorage.getItem('token');
     if (!token) {
