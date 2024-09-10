@@ -43,7 +43,7 @@ export const routes: Routes = [
     }
     ,
     {
-        path: 'edit-post',
+        path: 'edit-post/:id',
         component: EditJobPostComponent,
         title: 'Edit Post',
     },

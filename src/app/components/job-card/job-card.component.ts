@@ -9,11 +9,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './job-card.component.css'
 })
 export class JobCardComponent {
-  @Input() page ='';
   @Input() job !: any;
+  @Input() page = '';
 
   ngOnInit(){
     // console.log(this.job);
   }
-  
+
 }

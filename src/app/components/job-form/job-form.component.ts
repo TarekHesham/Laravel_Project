@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MultiSelectComponent } from '../multi-select/multi-select.component';
 import { GlobalService } from '../../services/global.service';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { JobService } from '../../services/job.service';
 
 
 @Component({
@@ -17,8 +18,9 @@ export class JobFormComponent implements OnInit {
   locations: any[] = [];
   selectedFiles: File[] = []; // مصفوفة للملفات المختارة
   jobForm !: FormGroup;
+  @Input() jobId!:any;
 
-  constructor(private globalService: GlobalService) {}
+  constructor(private globalService: GlobalService,private jobService:JobService) {}
 
   ngOnInit(): void {
     this.jobForm = new FormGroup({
@@ -44,6 +46,21 @@ export class JobFormComponent implements OnInit {
         console.error('Error loading locations', error);
       }
     });
+
+    this.jobService.getJobById(this.jobId).subscribe((response:any)=>{
+      this.jobForm.get('job_title')?.setValue(response.job_title);
+      this.jobForm.get('description')?.setValue(response.description);
+      this.jobForm.get('benefits')?.setValue(response.benefits);
+      this.jobForm.get('deadline')?.setValue(response.deadline);
+      this.jobForm.get('work_type')?.setValue(response.work_type);
+      this.jobForm.get('location_id')?.setValue(response.location_id);
+      this.jobForm.get('skills')?.setValue(response.skills);
+      this.jobForm.get('categories')?.setValue(response.categories);
+      this.jobForm.get('salary_from')?.setValue(response.salary_from);
+      this.jobForm.get('salary_to')?.setValue(response.salary_to);
+      this.jobForm.get('experience_level')?.setValue(response.experience_level);
+      this.jobForm.get('images')?.setValue(response.images);
+    })
   }
 
   // Getter methods for each form control

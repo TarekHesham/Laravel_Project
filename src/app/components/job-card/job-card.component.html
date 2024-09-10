@@ -21,7 +21,7 @@
 
     @if(page == 'employer_profile'){
         <div class="card-buttons">
-            <button class="btn btn-success" routerLink="/edit-post">Edit</button>
+            <button class="btn btn-success" [routerLink]="['/edit-post', job.id]">Edit</button>
             <button class="btn btn-danger">Cancel</button>
         </div>
     }

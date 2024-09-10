@@ -10,10 +10,10 @@ import { EmployerService } from '../../services/employer.service';
   templateUrl: './posted-jobs.component.html',
   styleUrl: './posted-jobs.component.css'
 })
-export class PostedJobsComponent implements OnInit{
+export class PostedJobsComponent implements OnInit {
+  constructor(private employerService: EmployerService){}
   myJobs!: any;
 
-  constructor(private employerService: EmployerService){}
 
   ngOnInit(){
     this.employerService.getJobs().subscribe(
