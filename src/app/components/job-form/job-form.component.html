@@ -98,7 +98,7 @@
 
     <div class="mb-3">
         <label class="form-label">Branding Elements</label>
-        <input type="file" class="form-control" multiple formControlName="images">
+        <input type="file" class="form-control" multiple formControlName="images" name="images" (change)="onFileChange($event)">
     </div>
 
     @if(page == 'create'){
