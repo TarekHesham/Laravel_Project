@@ -1,5 +1,5 @@
 .sidebar {
-    min-height: 100dvh;
+    min-height: calc(100dvh - 57px);
     border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
     max-width: 100dvw;
 }
