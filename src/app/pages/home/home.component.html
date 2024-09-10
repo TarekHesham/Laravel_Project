@@ -1,3 +1,40 @@
 <!-- @for (job of jobs; track job.id){ -->
-    <app-job-card page="home_posts"></app-job-card>
+    <!-- <app-job-card page="home_posts"></app-job-card> -->
 <!-- } -->
+
+<main>
+    <div class="search p-2">
+        <form [formGroup]="searchForm" (ngSubmit)="submit()">
+            <div class="form-search">
+                <input type="text" placeholder="search for jobs" class="form-control p-1 rounded border" formControlName="jobTitle">
+                <button class="btn btn-primary p-1">search</button>
+            </div>
+            <div class="secondary-search mt-2">
+                <select formControlName="location" class="form-select">
+                    <option value="">Select location</option>
+                    @for (location of locations; track $index) {
+                        <option value="{{location.id}}">{{location.name}}</option>
+                    }
+                </select>
+                <select formControlName="category" class="form-select">
+                    <option value="">Select category</option>
+                    @for (category of categories; track $index) {
+                        <option value="{{category.id}}">{{category.name}}</option>
+                    }
+                </select>
+                <input type="text" placeholder="Experience level" class="form-control" formControlName="experienceLevel">
+                <input type="number" placeholder="Salary from" class="form-control" formControlName="salaryFrom">
+                <input type="number" placeholder="Salary to" class="form-control" formControlName="salaryFrom">
+                <input type="date" placeholder="Date posted" class="form-control" formControlName="datePosted">
+            </div>
+        </form>
+    </div>
+    <div class="jobs p-2">
+        <app-job-card page="home_posts"></app-job-card>
+        <app-job-card page="home_posts"></app-job-card>
+        <app-job-card page="home_posts"></app-job-card>
+        <app-job-card page="home_posts"></app-job-card>
+        <app-job-card page="home_posts"></app-job-card>
+    </div>
+</main>
+
