@@ -1,11 +1,8 @@
 <div class="styling container">
     <h3>Upload Your CV</h3>
-<form>
   <div class="mb-3">
-    <input type="file"  class="form-control mt-3" />
+    <input type="file"  class="form-control mt-3" (change)="fileSelected($event)"/>
   </div>
-  <input type="hidden" name="type" value="cv">
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  <button type="submit" class="btn btn-primary" (click)="submitCV()">Submit</button>
 </div>
 

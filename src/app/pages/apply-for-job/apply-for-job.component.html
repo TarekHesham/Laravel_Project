@@ -1,19 +1,21 @@
 <div class="container mt-5">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link" [class.active]="selectedTab == 'upload'" id="upload-tab" (click)="selectedTab = 'upload'" routerLink="/apply-with-cv">Upload CV</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [class.active]="selectedTab == 'form'"  id="form-tab" (click)="selectedTab = 'form'" routerLink="/apply-with-form">Fill Form</a>
-      </li>
-    </ul>
+  <ul class="nav nav-tabs ">
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="selectedTab == 'cv'" id="upload-tab" (click)="selectedTab = 'cv'">Upload
+        CV</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="selectedTab == 'form'" id="form-tab" (click)="selectedTab = 'form'">Fill
+        Form</a>
+    </li>
+  </ul>
 
-    <div class="mt-3">
-      @if (selectedTab == 'upload') {
-        <app-apply-with-cv></app-apply-with-cv>
-      }
-      @else if (selectedTab == 'form') {
-        <app-apply-with-form></app-apply-with-form>
-      }
-    </div>
+  <div class="mt-3">
+    @if (selectedTab == 'cv') {
+    <app-apply-with-cv [jobId]="jobId"></app-apply-with-cv>
+    }
+    @else if (selectedTab == 'form') {
+    <app-apply-with-form [jobId]="jobId"></app-apply-with-form>
+    }
   </div>
+</div>

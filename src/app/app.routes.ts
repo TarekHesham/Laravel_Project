@@ -49,7 +49,7 @@ export const routes: Routes = [
         title: 'Edit Post',
     },
     {
-        path: 'apply-for-job',
+        path: 'apply-for-job/:slug',
         component: ApplyForJobComponent
     },
     {

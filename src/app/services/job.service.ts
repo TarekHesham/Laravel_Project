@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class JobService {
-  private baseUrl = 'http://127.0.0.1:8000/api/';
+  private baseUrl = 'http://127.0.0.1:8000/api';
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +21,8 @@ export class JobService {
   getJobBySlug(jobSlug: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/job/${jobSlug}`, this.getAuthHeaders());
   }
+
+ 
 
   private getAuthHeaders(): { headers: HttpHeaders } | undefined {
     const token = localStorage.getItem('token');

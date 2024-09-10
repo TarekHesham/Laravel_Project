@@ -10,6 +10,7 @@ section {
 
 .images {
     margin-bottom: 2rem;
+    border-radius: 5px;
 }
 
 .details {
@@ -21,7 +22,14 @@ section {
     box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 5%);
     background-color: white;
 }
+.categories {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
 
+.categories span {
+    margin-right: 0.5rem;
+}
 
 @media (max-width: 992px) {
     .col-lg-8, .col-lg-4 {
@@ -50,55 +58,19 @@ section {
         height: 200px;
     }
 
-    .comment-box {
-        flex-direction: column;
-        text-align: center;
-    }
+
 
     .image img {
         margin: 0 auto;
     }
 }
 
-.comments-container {
-    max-width: 800px;
-    margin: 0 auto;
+.special{
+    transition: 0.5s;
 }
 
-.comment-box {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+.special:hover{
+    transform: scale(1.1);
+
 }
-
-.image img{
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-}
-
-.content {
-    flex-grow: 1;
-}
-
-.name{
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-.text {
-    margin-bottom: 0.5rem;
-}
-
-.comments h3 {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-}
-
-
 

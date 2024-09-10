@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GlobalService {
-  private baseUrl = 'http://127.0.0.1:8000/api/';
+  private baseUrl = 'http://127.0.0.1:8000/api';
 
   constructor(private http: HttpClient) { }
 
@@ -18,10 +18,10 @@ export class GlobalService {
     return this.http.post(`${this.baseUrl}/comments`, data, this.getAuthHeaders());
   }
   
-  search(filters: object[]): Observable<any> {
+  search(filters: { [key: string]: any }): Observable<any> {
     // Create query string
     const queryParams = new HttpParams();
-    Object.keys(filters).forEach(key => queryParams.set(key, filters[key]));
+    Object.keys(filters).forEach((key: string) => queryParams.set(key, filters[key]));
 
     return this.http.get(`${this.baseUrl}/search`, {
       headers: this.getAuthHeaders()?.headers,
