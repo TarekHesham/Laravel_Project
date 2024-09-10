@@ -25,6 +25,4 @@ export class CreateJobPostComponent {
     console.log('Form Data received from JobFormComponent:', formData);
   }
 
-  
-
 }
