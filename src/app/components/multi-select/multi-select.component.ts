@@ -38,17 +38,4 @@ export class MultiSelectComponent implements OnInit {
     });
   }
 
-  // Use AfterViewInit to ensure the DOM is ready before initializing Choices.js
-  // ngAfterViewInit(): void {
-  // }
-
-  // // Initialize Choices.js on the select element
-  // const choices = new Choices(multiSelectElement, {
-  //   removeItemButton: true,
-  //   searchEnabled: true,
-  //   placeholder: true,
-  //   placeholderValue: 'Select all options'
-  // });
-
-  // }
 }

@@ -1,6 +1,6 @@
 <div class="info">
-    <img src="https://picsum.photos/200" alt="">
-    <h3 class="text-center">Employer Name</h3>
+    <img [src]="user?.avatar" alt="">
+    <h3 class="text-center">{{user?.name}}</h3>
 </div>
 
 
@@ -23,7 +23,7 @@
 
     <div class="show_tab col-9">
         @if (selectedTab == 'myInfo') {
-            <app-employer-info></app-employer-info>
+            <app-employer-info [user]="user"></app-employer-info>
         }
         @else if (selectedTab == 'postedJobs') {
             <app-posted-jobs></app-posted-jobs>
