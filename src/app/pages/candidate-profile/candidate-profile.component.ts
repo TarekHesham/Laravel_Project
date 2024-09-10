@@ -53,7 +53,10 @@ export class CandidateProfileComponent implements OnInit {
       .subscribe(
         (data) => {
           console.log(data);
-          this.jobs.splice(this.jobs.indexOf(applicationId), 1);
+          // get the index of the job
+          const jobApplication = this.jobs.findIndex((job) => job.application_id === applicationId);
+          // remove the job
+          this.jobs.splice(jobApplication, 1);
         },
         (error) => console.error(error)
       );

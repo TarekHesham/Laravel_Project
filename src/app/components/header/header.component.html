@@ -9,12 +9,11 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
         </li>
-        @if (user) {
-          @if (user.role == 'candidate') {
+        @if (user && user.role) {
+          @if (user.role == 'employer') {
             <li class="nav-item">
               <a class="nav-link" routerLink="applications">Applications</a>
             </li>
-          } @else if (user.role == 'employer') {
             <li class="nav-item">
               <a class="nav-link" routerLink="post-job">Add a new job</a>
             </li>
@@ -25,14 +24,14 @@
           }
         }
       </ul>
-      @if (user) {
+      @if (user && user.role) {
         <li class="nav-item nav-link dropdown d-flex">
           <img src="{{user.avatar}}" alt="" width="25px" height="25px" class="me-2">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {{user.name}}
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink="candidate-profile">profile</a></li>
+            <li><a class="dropdown-item" routerLink="{{user.role}}-profile">profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" (click)="logout()"> logout</a></li>
           </ul>
