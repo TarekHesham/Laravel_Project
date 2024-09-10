@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JobCardComponent } from "../../components/job-card/job-card.component";
 import { FormGroup, ReactiveFormsModule, FormControl, FormsModule } from '@angular/forms';
+import { GlobalService } from '../../services/global.service';
+// import {}
 
 @Component({
   selector: 'app-home',
@@ -12,33 +14,9 @@ import { FormGroup, ReactiveFormsModule, FormControl, FormsModule } from '@angul
 export class HomeComponent { 
 
   jobs!: any[] ;
-  token!: any;
 
-
-  locations:any = [
-    {
-      name: 'egypt',
-      id: 1,
-    },
-    {
-      name: 'cairo',
-      id: 2,
-    }
-  ];
-
-
-  categories:any = [
-    {
-      name: 'engineering',
-      id: 1,
-    },
-    {
-      name: 'sales',
-      id: 2,
-    }
-  ];
-
-
+  locations:any;
+  categories:any;
 
   selectedLocation: string = "";
   searchForm = new FormGroup({
@@ -50,11 +28,32 @@ export class HomeComponent {
     salaryTo: new FormControl(''),
     datePosted: new FormControl(''),
   });
-  constructor(){
-
+  constructor(private globalService:GlobalService){}
+  ngOnInit() {
+    this.globalService.locations().subscribe(
+      (data) => {
+        this.locations = data;
+      }
+    );
+    this.globalService.categories().subscribe(
+      (data) => {
+        this.categories = data;
+      }
+    );
   }
   submit() {
-    console.log(this.searchForm.value);
+    this.globalService.search({
+      query: this.searchForm.value['jobTitle'],
+      location: this.searchForm.value['location'],
+      category: this.searchForm.value['category'],
+      experience_level: this.searchForm.value['experienceLevel'],
+      salary_from: this.searchForm.value['salaryFrom'],
+      salary_to: this.searchForm.value['salaryTo'],
+      created_at: this.searchForm.value['datePosted'],
+    }).subscribe((response) => {
+      this.jobs = response;
+      console.log(this.jobs[0]);
+    });
   }
 
 }

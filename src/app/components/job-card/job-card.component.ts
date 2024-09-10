@@ -10,5 +10,5 @@ import { RouterLink } from '@angular/router';
 })
 export class JobCardComponent {
   @Input() page ='';
-
+  @Input() job: any;
 }

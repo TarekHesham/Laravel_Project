@@ -2,21 +2,21 @@
     <div class="card-header">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Company Logo" class="logo">
         <!-- Posted at -->
-        <span class="date">7 July</span>
+        <span class="date">{{job.date_posted}}</span>
     </div>
 
-    <h3 class="job-title">job Title</h3>
-    <a routerLink="/applications" class="replies">3 replies</a>
+    <h3 class="job-title">{{job.job_title}}</h3>
+    <a routerLink="/applications" class="replies">{{job.applications}} replies</a>
 
     <div class="skills">
-        <span class="skill">skill 1</span>
-        <span class="skill">skill 2</span>
-        <span class="skill">skill 3</span>
+        @for (skill of job.skills; track $index) {
+            <span class="skill">{{skill.name}}</span>
+        }
     </div>
 
-    <p class="location">Country, City</p>
+    <p class="location">{{job.location}}</p>
     <p class="description">
-        We want our devices and services to be more than just beautiful, but also useful and intuitive. To achieve this goal ...
+        {{job.description}}
     </p>
 
     @if(page == 'employer_profile'){

@@ -1,7 +1,3 @@
-<!-- @for (job of jobs; track job.id){ -->
-    <!-- <app-job-card page="home_posts"></app-job-card> -->
-<!-- } -->
-
 <main>
     <div class="search p-2">
         <form [formGroup]="searchForm" (ngSubmit)="submit()">
@@ -13,28 +9,26 @@
                 <select formControlName="location" class="form-select">
                     <option value="">Select location</option>
                     @for (location of locations; track $index) {
-                        <option value="{{location.id}}">{{location.name}}</option>
+                        <option value="{{location.name}}">{{location.name}}</option>
                     }
                 </select>
                 <select formControlName="category" class="form-select">
                     <option value="">Select category</option>
                     @for (category of categories; track $index) {
-                        <option value="{{category.id}}">{{category.name}}</option>
+                        <option value="{{category.name}}">{{category.name}}</option>
                     }
                 </select>
                 <input type="text" placeholder="Experience level" class="form-control" formControlName="experienceLevel">
                 <input type="number" placeholder="Salary from" class="form-control" formControlName="salaryFrom">
-                <input type="number" placeholder="Salary to" class="form-control" formControlName="salaryFrom">
+                <input type="number" placeholder="Salary to" class="form-control" formControlName="salaryTo">
                 <input type="date" placeholder="Date posted" class="form-control" formControlName="datePosted">
             </div>
         </form>
     </div>
     <div class="jobs p-2">
-        <app-job-card page="home_posts"></app-job-card>
-        <app-job-card page="home_posts"></app-job-card>
-        <app-job-card page="home_posts"></app-job-card>
-        <app-job-card page="home_posts"></app-job-card>
-        <app-job-card page="home_posts"></app-job-card>
+        @for (job of jobs; track $index) {
+            <app-job-card [job]="job"  page="home_posts"></app-job-card>
+        }
     </div>
 </main>
 
