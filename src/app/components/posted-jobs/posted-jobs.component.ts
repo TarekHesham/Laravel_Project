@@ -11,16 +11,18 @@ import { EmployerService } from '../../services/employer.service';
   styleUrl: './posted-jobs.component.css'
 })
 export class PostedJobsComponent implements OnInit{
+  myJobs!: any;
 
   constructor(private employerService: EmployerService){}
 
   ngOnInit(){
     this.employerService.getJobs().subscribe(
       (response) => {
-        console.log('Post Successfully', response);
+        console.log('jobs arrived Successfully', response);
+        this.myJobs = response;
       },
       (error) => {
-        console.error('Post failed:', error);
+        console.error('jobs failed to arrive', error);
       }
     );
   }
