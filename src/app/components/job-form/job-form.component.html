@@ -15,7 +15,7 @@
 
     <div class="mb-3">
         <label for="benefits" class="form-label">Job Benefits</label>
-        <textarea class="form-control" id="benefits" rows="3" name="benefits"></textarea>
+        <!-- <app-multi-select options_type ="benefits"></app-multi-select> -->
     </div>
 
     <div class="row">
@@ -37,10 +37,12 @@
     <div class="mb-3">
         <label class="form-label">Location</label>
         <select class="form-select" name="location">
-            <option selected>Select location from menu</option>
-            <option value="Cairo">Cairo</option>
-            <option value="Giza">Giza</option>
-            <option value="Alex">Alex</option>
+            <option selected disabled>Select location from menu</option>
+
+            @for (location of locations; track location.id){
+                <option value="{{location.id}}">{{location.name}}</option>
+            }
+
         </select>
     </div>
 
@@ -82,32 +84,7 @@
     <!-- Categories -->
     <div class="mb-3">
         <label class="form-label main_label">Category</label>
-        <div class="row px-3">
-            <div class="form-check col-6">
-                <input class="form-check-input" type="checkbox" id="front-end" value="front-end" name="categories">
-                <label class="form-check-label" for="front-end">front-end</label>
-            </div>
-            <div class="form-check col-6">
-                <input class="form-check-input" type="checkbox" id="back-end" value="back-end" name="categories">
-                <label class="form-check-label" for="back-end">back-end</label>
-            </div>
-        </div>
-        <div class="row px-3">
-            <div class="form-check col-6">
-                <input class="form-check-input" type="checkbox" id="fullstack" value="fullstack" name="categories">
-                <label class="form-check-label" for="fullstack">fullstack</label>
-            </div>
-            <div class="form-check col-6">
-                <input class="form-check-input" type="checkbox" id="devops" value="devops" name="categories">
-                <label class="form-check-label" for="devops">devops</label>
-            </div>
-        </div>
-        <div class="row px-3">
-            <div class="form-check col-6">
-                <input class="form-check-input" type="checkbox" id="cloud" value="cloud" name="categories">
-                <label class="form-check-label" for="cloud">cloud</label>
-            </div>
-        </div>
+        <!-- <app-multi-select options_type ="categories"></app-multi-select> -->
     </div>
 
     <div class="row">
