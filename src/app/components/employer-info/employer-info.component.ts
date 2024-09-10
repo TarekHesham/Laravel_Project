@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-employer-info',
@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './employer-info.component.css'
 })
 export class EmployerInfoComponent {
-
+  
+  @Input () user:any;
 }

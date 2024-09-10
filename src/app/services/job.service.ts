@@ -22,8 +22,6 @@ export class JobService {
     return this.http.get(`${this.baseUrl}/job/${jobSlug}`, this.getAuthHeaders());
   }
 
- 
-
   private getAuthHeaders(): { headers: HttpHeaders } | undefined {
     const token = localStorage.getItem('token');
     if (!token) {

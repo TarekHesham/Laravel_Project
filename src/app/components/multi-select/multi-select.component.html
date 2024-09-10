@@ -1,0 +1,9 @@
+@if (options.length > 0) {
+    <div class="mb-3">
+        <select [id]="options_type" name="{{options_type}}"  multiple="multiple" class="form-select">
+            @for (option of options; track option.name){
+            <option value="{{ option.id }}">{{ option.name }}</option>
+            }
+        </select>
+    </div>
+}
