@@ -21,13 +21,13 @@
 
     @if(page == 'employer_profile'){
         <div class="card-buttons">
-            <button class="btn btn-success" routerLink="/edit-post">Edit</button>
+            <button class="btn btn-success" [routerLink]="['/edit-post', job.slug]">Edit</button>
             <button class="btn btn-danger">Cancel</button>
         </div>
     }
     @else if (page == 'home_posts') {
         <div class="card-buttons">
-            <button class="btn btn-success" routerLink="/job-details">More Details</button>
+            <button class="btn btn-success" [routerLink]="['/job-details', job.slug]">More Details</button>
         </div>
     }
 </div>

@@ -26,14 +26,12 @@ export class CardDetailsComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const jobId = 5;
-      this.jobService.getJobById(jobId).subscribe(data => {
+      console.log(params);
+      this.jobService.getJobBySlug(params['slug']).subscribe(data => {
         console.log(data);
         this.job = data;
       });
     });
-
-   
   }
 
 

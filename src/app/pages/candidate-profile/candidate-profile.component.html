@@ -27,7 +27,7 @@
         </tr>
       </thead>
       <tbody>
-        @for (job of jobs; track $index) {
+        @for (job of jobs; track job.id) {
           <tr >
             <td>{{ $index + 1 }}</td>
             <td>{{ job.job_title }}</td>

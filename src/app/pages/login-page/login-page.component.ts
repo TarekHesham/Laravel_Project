@@ -37,19 +37,12 @@ export class LoginPageComponent {
     console.log("submit", this.loginForm.value);
     // call api
     this.authService.login(this.loginForm.value)
-    .subscribe(
-      (response) => {
-        console.log('Login successful:', response);
-
-        localStorage.setItem('token', `${response.token_type} ${response.access_token}`);
-        this.router.navigate(['job-details']);
-      },
-      (error) => {
-        // errors handler
-        console.error('Login failed:', error);
-        this.errorMessages = error.error.message || 'Login failed';
+    .subscribe({
+      error: (error) => {
+        this.errorMessages = error.error;
+        console.log("error", error);
       }
-    );
+    });
   }
   visited(control: AbstractControl): boolean {
     return control.touched || control.dirty;

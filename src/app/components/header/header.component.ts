@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../interfaces/user';
 
@@ -11,27 +11,16 @@ import { User } from '../../interfaces/user';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  user?:User;
-  constructor(private authService: AuthService
+  @Input() user!:User;
+  constructor(private authService: AuthService,
+    private router: Router
   ) {}
-  ngOnInit() {
-    this.authService.getUser().subscribe(
-      (response) => {
-        this.user = response;
-      },
-      (error) => {
 
-      }
-    );
-  }
   logout() {
-    this.authService.logout().subscribe(
-      (response) => {
-        location.reload();
-      },
-      (error) => {
-
+    this.authService.logout().subscribe({
+      next: () => {
+        this.router.navigate(['/login']);
       }
-    );
+    });
   }
 }

@@ -33,7 +33,7 @@ export const routes: Routes = [
         title: 'dashboard'
     },
     {
-        path: 'job-details',
+        path: 'job-details/:slug',
         component: CardDetailsComponent
     },
     {
