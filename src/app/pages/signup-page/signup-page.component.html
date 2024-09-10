@@ -1,13 +1,14 @@
 <div class="container">
-    <div class="form-wrapper border rounded p-3 mx-auto mt-4">
+    <div class="form-wrapper border rounded p-3 mx-auto mt-4 bg-white">
         <form class="mt-4" [formGroup]="signupForm" (ngSubmit)="submit()">
             <h1 class="mb-3">Create account</h1>
             <p>Let's get started</p>
+            <label>what is your role?</label>
             <div class="form-role mb-3">
-                <label for="candidate" class="form-card rounded p-2 me-1">Candidate
+                <label for="candidate" class="form-card rounded p-2">Candidate
                     <input type="radio" value="candidate" name="role" id="candidate" class="me-4" hidden formControlName="role">
                 </label>
-                <label for="employer" class="form-card rounded p-2 me-1">Employer
+                <label for="employer" class="form-card rounded p-2">Employer
                     <input type="radio" value="employer" name="role" id="employer" hidden formControlName="role">
                 </label>
             </div>
@@ -48,7 +49,7 @@
                 <label for="confirm-password">Confirm password</label>
                 <input class="form-control" type="password" name="confirm-password" id="confirm-password" formControlName="confirmPassword"/>
                 @if(visited(confirmPassword) && confirmPassword.errors?.['required'] ) {
-                    <span class="error">Required</span>
+                    <span class="error">Confirm password Required</span>
                 }
                 @if(visited(confirmPassword) && confirmPassword.errors?.['notMatching'] ) {
                     <span class="error">Passwords does not match</span>

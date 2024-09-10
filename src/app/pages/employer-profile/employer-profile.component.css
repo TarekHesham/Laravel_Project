@@ -1,0 +1,64 @@
+.info {
+    border: 1px solid rgb(232, 232, 232);
+    width: 80%;
+    margin: auto;
+    padding: 2rem;
+    background-color: white;
+    margin-top: 2rem;
+    box-shadow: 8px 8px 8px 5px rgba(0, 0, 0, 0.05);
+}
+
+img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 5px 5px 5px 3px rgba(113, 113, 113, 0.05);
+}
+
+.profile_content{
+    width: 80%;
+    background-color: aqua;
+    margin: auto;
+    height: 100vh;
+    box-shadow: 8px 8px 8px 5px rgba(0, 0, 0, 0.05);
+}
+.settings_tabs{
+    background-color: white;
+    border-top: 1px solid rgb(232, 232, 232);
+    border-left: 1px solid rgb(232, 232, 232);
+    padding: 2rem 2rem 0 2rem;
+}
+
+.show_tab{
+    background-color: white;
+    border-top: 1px solid rgb(232, 232, 232);
+    border-right: 1px solid rgb(232, 232, 232);
+}
+
+
+a{
+    color:  rgb(176, 176, 176);
+    padding: 0px;
+}
+
+li{
+    padding-top: 15px;
+}
+
+a::before{
+    content: '';
+    border: 1px solid rgb(176, 176, 176);
+    margin-right: 5px;
+}
+
+a:hover::before, a.active::before, a.active{
+    border-color: blue;
+    color: blue !important;
+}
+
+h2{
+    font-size: 900;
+    font-weight: bold;
+}

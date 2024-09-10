@@ -1,0 +1,30 @@
+.controls {
+    display: flex;
+    gap: 0.5rem;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 1fr repeat(6, max-content);
+    column-gap: 2rem;
+    overflow-x: auto;
+}
+.table-body, .table-header, .table-row {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column-start: 1;
+    grid-column-end: 8;
+}
+.table-header {
+    font-weight: 600;
+}
+.table-body {
+    row-gap: 0.5rem;
+}
+.table-row {
+    align-items: center;
+}
+
+.table-header .table-row, .table-body .table-row:not(:last-child) {
+    border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+    padding: 0.5rem 0;
+}

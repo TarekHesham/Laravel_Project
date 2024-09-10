@@ -31,10 +31,7 @@ export class LoginPageComponent {
 
   submit() {
     this.loginForm.markAllAsTouched();
-    if (this.email.errors) {
-      return;
-    }
-    if (this.password.errors) {
+    if (this.email.errors || this.password.errors) {
       return;
     }
     console.log("submit", this.loginForm.value);

@@ -1,0 +1,44 @@
+<div class="d-flex flex-column-reverse">
+  <div class="profile p-3">
+    <h3 class="text-center mb-3">Profile</h3>
+    <p class="fw-bold">Email:</p>
+    <p>{{ candidate.email }}</p>
+  </div>
+  <div class="info">
+    <img [src]="candidate.avatar" alt="">
+    <h3 class="text-center">{{ candidate.name }}</h3>
+  
+  </div>
+</div>
+
+  
+
+  <div class="jobs container p-3">
+    <h3 class="text-center mb-3">Submitted Jobs</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Job Title</th>
+          <th>Job Description</th>
+          <th>Job Type</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (job of jobs; track $index) {
+          <tr >
+            <td>{{ $index + 1 }}</td>
+            <td>{{ job.job_title }}</td>
+            <td>{{ job.job_description }}</td>
+            <td>{{ job.job_type }}</td>
+            <td>{{ job.status }}</td>
+            <td>
+              <button (click)="cancelJobApplication(job.application_id)" class="btn btn-danger">Cancel</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
