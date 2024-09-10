@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import Choices from 'choices.js';
 import { GlobalService } from '../../services/global.service';
 
@@ -10,8 +10,9 @@ import { GlobalService } from '../../services/global.service';
   styleUrl: './multi-select.component.css',
 })
 export class MultiSelectComponent implements OnInit {
-  options!: any[];
+  options: any[] = [];
   @Input() options_type = '';
+  @Output() selectedOptions = new EventEmitter<any[]>();
 
   constructor(private globalService: GlobalService) {}
 
@@ -21,14 +22,23 @@ export class MultiSelectComponent implements OnInit {
         if (response) {
           this.options = response;
           setTimeout(() => {
-            const selectElements = document.getElementById(this.options_type);
+            const selectElement = document.getElementById(this.options_type) as HTMLSelectElement;
             const config = {
               removeItemButton: true,
               searchEnabled: true,
               placeholder: true,
               placeholderValue: 'Select options from menu',
             };
-              if (selectElements) new Choices(selectElements, config);
+              if (selectElement) new Choices(selectElement, config);
+
+              selectElement.addEventListener('change', () => {
+                const selectedValues = Array.from(selectElement.selectedOptions).map(
+                  (option: HTMLOptionElement) => option.value
+                );
+                this.selectedOptions.emit(selectedValues);  // Emit selected values
+              });
+
+
           }, 500);
         }
       },

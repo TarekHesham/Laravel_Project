@@ -1,32 +1,54 @@
-<form action="" class="job_form" enctype="multipart/form-data" method="post">
+
+<form [formGroup]="jobForm" class="job_form" enctype="multipart/form-data" (ngSubmit)="submit()">
     <div class="mb-3">
         <label for="job_title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="job_title" name="job_title">
+        <input type="text" class="form-control" id="job_title" formControlName="job_title">
+
+            <!-- validation -->
+            @if (job_title?.touched && job_title?.hasError('required')){
+            <div class="alert alert-danger  p-2">
+                <span>Job Title is Required</span>
+            </div>
+            }
     </div>
     <div class="mb-3">
         <label for="companyName" class="form-label">Company</label>
-        <input type="text" class="form-control" id="companyName" name="companyName">
+        <input type="text" class="form-control" id="companyName"  formControlName="companyName">
+
+        <!-- validation -->
+        @if (companyName?.touched && companyName?.hasError('required')){
+            <div class="alert alert-danger  p-2">
+                <span>Company Name is Required</span>
+            </div>
+            }
     </div>
 
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+        <textarea class="form-control" id="description" rows="3"  formControlName="description"></textarea>
+
+        <!-- validation -->
+        @if (description?.touched && description?.hasError('required')){
+            <div class="alert alert-danger  p-2">
+                <span>Description is Required</span>
+            </div>
+            }
     </div>
 
     <div class="mb-3">
-        <label for="benefits" class="form-label">Job Benefits</label>
-        <app-multi-select options_type ="benefits"></app-multi-select>
+        <label  class="form-label">Job Benefits</label>
+        <app-multi-select options_type ="benefits" (selectedOptions)="onSelectedOptionsChange('benefits', $event)"></app-multi-select>
     </div>
 
     <div class="row">
         <div class="mb-3 col-6">
             <label for="deadline" class="form-label">Application Deadline</label>
-            <input type="date" class="form-control" id="deadline" name="deadline">
+            <input type="date" class="form-control" id="deadline"  formControlName="deadline">
         </div>
         <div class="mb-3 col-6">
             <label class="form-label">Work Type</label>
-            <select class="form-select" name="work_type">
-                <option selected>Select type from menu</option>
+            <select class="form-select" name="work_type" formControlName="work_type">
+                <option selected disabled>Select type from menu</option>
                 <option value="Remote">Remote</option>
                 <option value="On-site">On-site</option>
                 <option value="Hybrid">Hybrid</option>
@@ -36,7 +58,7 @@
 
     <div class="mb-3">
         <label class="form-label">Location</label>
-        <select class="form-select" name="location">
+        <select class="form-select" name="location" formControlName="location">
             <option selected disabled>Select location from menu</option>
 
             @for (location of locations; track location.id){
@@ -49,44 +71,45 @@
     <!-- Skills -->
     <div class="mb-3">
         <label class="form-label main_label">Skills</label>
-        <app-multi-select options_type ="skills"></app-multi-select>
+        <app-multi-select options_type ="skills" (selectedOptions)="onSelectedOptionsChange('skills', $event)"></app-multi-select>
     </div>
 
     <!-- Categories -->
     <div class="mb-3">
         <label class="form-label main_label">Category</label>
-        <app-multi-select options_type ="categories"></app-multi-select>
+        <app-multi-select options_type ="categories" (selectedOptions)="onSelectedOptionsChange('categories', $event)"></app-multi-select>
     </div>
 
     <div class="row">
         <div class="mb-3 col-6">
             <label for="salary_from" class="form-label">Salary From</label>
-            <input type="number" class="form-control" id="salary_from" name="salary_from">
+            <input type="number" class="form-control" id="salary_from" name="salary_from" formControlName="salary_from">
         </div>
         <div class="mb-3 col-6">
             <label for="salary_to" class="form-label">Salary To</label>
-            <input type="number" class="form-control" id="salary_to" name="salary_to">
+            <input type="number" class="form-control" id="salary_to" name="salary_to" formControlName="salary_to">
         </div>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Experience Level</label>
-        <select class="form-select" name="experience_level">
-            <option selected>Select experience level from menu</option>
+        <select class="form-select" name="experience_level" formControlName="experience_level">
+            <option selected disabled>Select experience level from menu</option>
             <option value="Fresh">Fresh</option>
             <option value="Junior">Junior</option>
             <option value="Senior">Senior</option>
         </select>
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Company logo</label>
-        <input type="file" class="form-control" name="employer_images">
+        <!-- validation -->
+        @if (experience_level?.touched && experience_level?.hasError('required')){
+            <div class="alert alert-danger p-2">
+                <span>Experience level is Required</span>
+            </div>
+            }
     </div>
 
     <div class="mb-3">
         <label class="form-label">Branding Elements</label>
-        <input type="file" class="form-control" name="employer_images" multiple>
+        <input type="file" class="form-control" multiple formControlName="employer_images">
     </div>
 
     @if(page == 'create'){
