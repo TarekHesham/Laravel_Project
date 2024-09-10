@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CandidateService {
-  private baseUrl = 'http://127.0.0.1:8000/api/';
+  private baseUrl = 'http://127.0.0.1:8000/api';
 
   constructor(private http: HttpClient) { }
 
