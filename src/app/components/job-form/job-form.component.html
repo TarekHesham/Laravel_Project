@@ -38,16 +38,16 @@
             <label class="form-label">Work Type</label>
             <select class="form-select" name="work_type" formControlName="work_type">
                 <option selected disabled>Select type from menu</option>
-                <option value="Remote">Remote</option>
-                <option value="On-site">On-site</option>
-                <option value="Hybrid">Hybrid</option>
+                <option value="remote">Remote</option>
+                <option value="onsite">On-site</option>
+                <option value="hybrid">Hybrid</option>
             </select>
         </div>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Location</label>
-        <select class="form-select" name="location" formControlName="location">
+        <select class="form-select" name="location_id" formControlName="location_id">
             <option selected disabled>Select location from menu</option>
 
             @for (location of locations; track location.id){
