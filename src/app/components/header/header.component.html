@@ -9,9 +9,21 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="admin-dashboard">Admin Dashboard</a>
-        </li>
+        @if (user) {
+          @if (user.role == 'candidate') {
+            <li class="nav-item">
+              <a class="nav-link" routerLink="applications">Applications</a>
+            </li>
+          } @else if (user.role == 'employer') {
+            <li class="nav-item">
+              <a class="nav-link" routerLink="post-job">Add a new job</a>
+            </li>
+          } @else if (user.role == 'admin') {
+            <li class="nav-item">
+              <a class="nav-link" routerLink="admin-dashboard">Admin Dashboard</a>
+            </li>
+          }
+        }
       </ul>
       @if (user) {
         <li class="nav-item nav-link dropdown d-flex">
