@@ -25,7 +25,7 @@ export class JobFormComponent implements OnInit {
       benefits: new FormControl([]),
       deadline: new FormControl(''),
       work_type: new FormControl(''),
-      location: new FormControl(''),
+      location_id: new FormControl(''),
       skills: new FormControl([]),
       categories: new FormControl([]),
       salary_from: new FormControl(''),
@@ -69,8 +69,8 @@ export class JobFormComponent implements OnInit {
     return this.jobForm.get('work_type');
   }
 
-  get location() {
-    return this.jobForm.get('location');
+  get location_id() {
+    return this.jobForm.get('location_id');
   }
 
   get skills() {
