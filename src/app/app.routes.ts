@@ -57,7 +57,7 @@ export const routes: Routes = [
         title: 'Employer Profile',
     },
     {
-        path: 'applications',
+        path: 'applications/:slug',
         component: ReviewApplicationsComponent
     }
     ,

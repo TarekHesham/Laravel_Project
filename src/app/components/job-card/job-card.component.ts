@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { EmployerService } from '../../services/employer.service';
 
 @Component({
   selector: 'app-job-card',
@@ -11,5 +12,18 @@ import { RouterLink } from '@angular/router';
 export class JobCardComponent {
   @Input() job !: any;
   @Input() page = '';
+
+  constructor(private employerService:EmployerService){}
+
+  cancelJobPost(jobId: number){
+    this.employerService.cancelJob(jobId).subscribe(
+      (data) => {
+        console.log("post deleted successfully", data);
+      },
+      (error) => console.log("post delete failed", error)
+      
+    );
+
+  }
 
 }
