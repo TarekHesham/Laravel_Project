@@ -12,12 +12,13 @@
             </tr>
         </thead>
         <tbody class="table-group-divider">
-            <tr>
+            
                 @if (job?.applications?.length > 0) {
                     @for (application of job.applications; track $index) {
+                        <tr>
                         <td data-label="Name">{{application.candidate.name}}</td>
                         <td data-label="Applied on">{{application.applyed_at | date}}</td>
-                        <td data-label="Phone number">{{application.form ? application.form.phone_number : 'Not Provided'}}</td>
+                        <td data-label="Phone number">{{application.form ? application.form.phone : 'Not Provided'}}</td>
                         <td data-label="Email">{{application.candidate.email}}</td>
 
                         @if (application.status === 'pending') {
@@ -42,11 +43,13 @@
                                 <span>Not Uploaded</span>
                             }
                         </td>
+                    </tr>
                     }
                 } @else {
-                    <td colspan="6">No Applications</td>
+                    <tr>
+                        <td colspan="6">No Applications</td>
+                    </tr>
                 }
-            </tr>
         </tbody>
     </table>
 </div>
