@@ -13,15 +13,39 @@
         </thead>
         <tbody class="table-group-divider">
             <tr>
-                <td data-label="Name">Kay Tottleben</td>
-                <td data-label="Applied on">07/27/2019</td>
-                <td data-label="Phone number">029-291-3012</td>
-                <td data-label="Email">example&#64;gmail.com</td>
-                <td class="actions">
-                    <button class="accept">Accept</button>
-                    <button class="reject">Reject</button>
-                </td>
-                <td data-label="Download CV">Not Uploaded</td>
+                @if (job?.applications?.length > 0) {
+                    @for (application of job.applications; track $index) {
+                        <td data-label="Name">{{application.candidate.name}}</td>
+                        <td data-label="Applied on">{{application.applyed_at | date}}</td>
+                        <td data-label="Phone number">{{application.form ? application.form.phone_number : 'Not Provided'}}</td>
+                        <td data-label="Email">{{application.candidate.email}}</td>
+
+                        @if (application.status === 'pending') {
+                            <td class="actions">
+                                <button class="accept" (click)="applicationState(application.id, 'accept')">Accept</button>
+                                <button class="reject" (click)="applicationState(application.id, 'reject')">Reject</button>
+                            </td>
+                        } @else if (application.status === 'accepted') {
+                            <td class="actions">
+                                <button class="reject" (click)="applicationState(application.id, 'reject')">Reject</button>
+                            </td>
+                        } @else if (application.status === 'rejected') {
+                            <td class="actions">
+                                <button class="accept" (click)="applicationState(application.id, 'accept')">Accept</button>
+                            </td>
+                        }
+
+                        <td data-label="Download CV">
+                            @if (application.cv) {
+                                <a href="{{ application.cv }}" class="btn btn-primary" target="_blank" download="{{ application.candidate.name }}.pdf">Download</a>
+                            } @else {
+                                <span>Not Uploaded</span>
+                            }
+                        </td>
+                    }
+                } @else {
+                    <td colspan="6">No Applications</td>
+                }
             </tr>
         </tbody>
     </table>

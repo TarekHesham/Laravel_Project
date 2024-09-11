@@ -1,24 +1,25 @@
 import { Component } from '@angular/core';
 import { ApplicationComponent } from '../../components/application/application.component';
-import { JobService } from '../../services/job.service';
 import { ActivatedRoute } from '@angular/router';
+import { EmployerService } from '../../services/employer.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-review-applications',
   standalone: true,
-  imports: [ApplicationComponent],
+  imports: [ApplicationComponent, DatePipe],
   templateUrl: './review-applications.component.html',
   styleUrl: './review-applications.component.css'
 })
 export class ReviewApplicationsComponent {
 
   public job: any;
-  constructor(private jobService:JobService, private route: ActivatedRoute){}
+  constructor(private employerService:EmployerService, private route: ActivatedRoute){}
 
   ngOnInit(){
     this.route.params.subscribe(params => {
       const slug = params ['slug'];
-      this.jobService.getJobBySlug(slug).subscribe(
+      this.employerService.getApplicationsOnJob(slug).subscribe(
         (response) => {
           console.log(response);
           this.job = response;
@@ -28,5 +29,30 @@ export class ReviewApplicationsComponent {
       }
       );
     })
+  }
+
+  applicationState(id: number, action: string) {
+    if (action === 'accept') {
+      this.employerService.acceptApplication(id).subscribe(
+        (response) => {
+          alert(response.message);
+          // Change status in the list
+          this.job.applications.find((app: any) => app.id === id).status = 'accepted';
+        },
+        (error) => {
+          console.error('Application failed to accept', error);
+        }
+      )
+    } else if (action === 'reject') {
+      this.employerService.rejectApplication(id).subscribe(
+        (response) => {
+          alert(response.message);
+          this.job.applications.find((app: any) => app.id === id).status = 'rejected';
+        },
+        (error) => {
+          console.error('Application failed to reject', error);
+        }
+      )
+    }
   }
 }

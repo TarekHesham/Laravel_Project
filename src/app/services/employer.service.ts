@@ -15,6 +15,10 @@ export class EmployerService {
     return this.http.get(`${this.baseUrl}/employer/jobs`, this.getAuthHeaders());
   }
 
+  getApplicationsOnJob(slug: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/job/${slug}/applications`, this.getAuthHeaders());
+  }
+
   createJob(jobData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/jobs`, jobData, this.getAuthHeaders());
   }
@@ -25,6 +29,12 @@ export class EmployerService {
 
   cancelJob(jobId: number): Observable<any> {
     return this.http.post(`${this.baseUrl}/employer/${jobId}/cancel`, {},this.getAuthHeaders());
+  }
+  acceptApplication(applicationId: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}/application/${applicationId}/accept`, {},this.getAuthHeaders());
+  }
+  rejectApplication(applicationId: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}/application/${applicationId}/reject`, {},this.getAuthHeaders());
   }
 
   private getAuthHeaders(): { headers: HttpHeaders } {
