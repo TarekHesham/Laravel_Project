@@ -1,5 +1,9 @@
-@for(job of myJobs; track $index){
-    @if(job){
-        <app-job-card page="employer_profile" [job]="job.job"></app-job-card>
+<div class="row posts_holder">
+    @for(job of myJobs; track $index){
+        @if(job){
+            <div class="col-12 col-md-12 col-lg-6">
+                <app-job-card page="employer_profile" [job]="job.job"></app-job-card>
+            </div>
+        }
     }
-}
+</div>

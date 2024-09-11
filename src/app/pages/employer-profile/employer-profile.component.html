@@ -8,7 +8,7 @@
 <div class="row profile_content">
     <div class="settings_tabs col-3">
         <h2>Settings</h2>
-        <ul class="nav flex-column">
+        <ul>
             <li class="nav-item">
                 <a class="nav-link" [class.active]=" selectedTab == 'myInfo' " id="myInfo" (click)="selectedTab = 'myInfo'" routerLink="/employer-info">My info</a>
             </li>
@@ -21,7 +21,7 @@
         </ul>
     </div>
 
-    <div class="show_tab col-9">
+    <div class="show_posts col-9">
         @if (selectedTab == 'myInfo') {
             <app-employer-info [user]="user"></app-employer-info>
         }

@@ -8,10 +8,26 @@
     font-weight: bold;
 }
 
+h2{
+    font-size: 40px;
+    font-weight: bold;
+}
+
 .form_section{
     width: 70%;
     background: white;
     margin: 30px auto;
     border-radius: 10px;
     box-shadow: 2px 2px 20px -10px black;
+}
+
+@media (max-width: 768px) { 
+    .create_head{
+        padding: 10px;
+    }
+
+    h2{
+        font-size: 25px;
+    }
+    
 }
