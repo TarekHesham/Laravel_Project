@@ -19,6 +19,7 @@ export class JobCardComponent {
     this.employerService.cancelJob(jobId).subscribe(
       (data) => {
         console.log("post deleted successfully", data);
+        this.job.status = "closed";
       },
       (error) => console.log("post delete failed", error)
       

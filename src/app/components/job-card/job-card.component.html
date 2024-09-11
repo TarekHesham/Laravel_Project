@@ -23,10 +23,14 @@
     </p>
 
     @if(page == 'employer_profile'){
-        <div class="card-buttons">
-            <button class="btn btn-success" [routerLink]="['/edit-post', job.id]">Edit</button>
-            <button class="btn btn-danger" (click)="cancelJobPost(job.id)">Cancel</button>
-        </div>
+        @if (job.status !== 'closed'){
+            <div class="card-buttons">
+                <button class="btn btn-success" [routerLink]="['/edit-post', job.id]">Edit</button>
+                <button class="btn btn-danger" (click)="cancelJobPost(job.id)">Cancel</button>
+            </div>
+        } @else {
+            <span class="text-danger">Closed</span>
+        }
     }
     @else if (page == 'home_posts') {
         <div class="card-buttons">

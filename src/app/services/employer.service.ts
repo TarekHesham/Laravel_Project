@@ -24,7 +24,7 @@ export class EmployerService {
   }
 
   cancelJob(jobId: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/employer/${jobId}/cancel`, this.getAuthHeaders());
+    return this.http.post(`${this.baseUrl}/employer/${jobId}/cancel`, {},this.getAuthHeaders());
   }
 
   private getAuthHeaders(): { headers: HttpHeaders } {
