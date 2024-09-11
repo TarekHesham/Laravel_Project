@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
-import { CardDetailsComponent } from './components/card-details/card-details.component';
+import { JobDetailsComponent } from './pages/job-details/job-details.component';
 import { CreateJobPostComponent } from './pages/create-job-post/create-job-post.component';
 import { EditJobPostComponent } from './pages/edit-job-post/edit-job-post.component';
 import { ApplyForJobComponent } from './pages/apply-for-job/apply-for-job.component';
@@ -33,7 +33,7 @@ export const routes: Routes = [
     },
     {
         path: 'job-details/:slug',
-        component: CardDetailsComponent
+        component: JobDetailsComponent
     },
     {
         path: 'post-job',
