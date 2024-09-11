@@ -1,6 +1,6 @@
 @if (job) {
 <section class="container mt-5">
-    <div class="images">
+    <div class="images {{job.images.length > 0 ? 'border' : ''}}">
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 @for (image of job.images; track $index) {
@@ -8,7 +8,6 @@
                     <img [src]="image.image" class="d-block w-100" alt="...">
                 </div>
                 }
-
             </div>
             @if(job.images.length > 1) {
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
@@ -26,12 +25,12 @@
     </div>
     <div class="row">
         <div class="col-lg-8 mb-4">
-            <div class="border styling p-3 mb-4 rounded-5">
+            <div class="border styling p-3 mb-4 rounded">
                 <div class="d-flex gap-3 align-items-center ">
                     <h1 class="text-center w-100">{{job.job_title}}</h1>
                 </div>
             </div>
-            <div class="special styling p-3 rounded-2">
+            <div class="special styling p-3 rounded">
                 <p class="categories">
                     @for (category of job.categories; track $index) {
                         <span>{{category.name}}</span>
