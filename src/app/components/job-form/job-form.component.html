@@ -26,7 +26,7 @@
 
     <div class="mb-3">
         <label  class="form-label">Job Benefits</label>
-        <app-multi-select options_type ="benefits" (selectedOptions)="onSelectedOptionsChange('benefits', $event)"></app-multi-select>
+        <app-multi-select options_type ="benefits" (selectedOptions)="onSelectedOptionsChange('benefits', $event)" [jobId]="jobId" [initialOptions]="initialBenefits"></app-multi-select>
     </div>
 
     <div class="row">
@@ -60,13 +60,13 @@
     <!-- Skills -->
     <div class="mb-3">
         <label class="form-label main_label">Skills</label>
-        <app-multi-select options_type ="skills" (selectedOptions)="onSelectedOptionsChange('skills', $event)"></app-multi-select>
+        <app-multi-select options_type ="skills" (selectedOptions)="onSelectedOptionsChange('skills', $event)" [jobId]="jobId" [initialOptions]="initialSkills"></app-multi-select>
     </div>
 
     <!-- Categories -->
     <div class="mb-3">
         <label class="form-label main_label">Category</label>
-        <app-multi-select options_type ="categories" (selectedOptions)="onSelectedOptionsChange('categories', $event)"></app-multi-select>
+        <app-multi-select options_type ="categories" (selectedOptions)="onSelectedOptionsChange('categories', $event)" [jobId]="jobId" [initialOptions]="initialCategories"></app-multi-select>
     </div>
 
     <div class="row">
@@ -101,14 +101,14 @@
         <input type="file" class="form-control" multiple formControlName="images" name="images" (change)="onFileChange($event)">
     </div>
 
-    @if(page == 'create'){
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-primary" type="submit">Submit</button>
-        </div>
-    }
-    @else if (page == 'edit') {
+    @if(page == 'edit'){
         <div class="d-grid gap-2 col-6 mx-auto">
             <button class="btn btn-success" type="submit">Update</button>
+        </div>
+    }
+    @else if (page == 'create') {
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary" type="submit">Submit</button>
         </div>
     }
 

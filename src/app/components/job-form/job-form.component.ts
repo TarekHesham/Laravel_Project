@@ -16,10 +16,13 @@ export class JobFormComponent implements OnInit {
   @Input() page = '';
   @Output() formSubmit = new EventEmitter<any>();  
   locations: any[] = [];
+  initialSkills !: any[];
+  initialCategories !: any[];
+  initialBenefits !: any[];
   selectedFiles: File[] = []; // مصفوفة للملفات المختارة
   jobForm !: FormGroup;
   @Input() jobId!:any;
-
+  @Input () isEdit = false;
   constructor(private globalService: GlobalService,private jobService:JobService) {}
 
   ngOnInit(): void {
@@ -41,26 +44,37 @@ export class JobFormComponent implements OnInit {
     this.globalService.locations().subscribe({
       next: (response: any) => {
         this.locations = response;
+
+        if (this.isEdit){
+          this.jobService.getJobById(this.jobId).subscribe((response:any)=>{
+  
+            this.initialSkills = response.skills.map((skill:any)=>skill.id);
+            this.initialCategories = response.categories.map((category:any)=>category.id);
+            this.initialBenefits = response.benefits.map((benefit:any)=>benefit.id);
+  
+            this.jobForm.get('job_title')?.setValue(response.job_title);
+            this.jobForm.get('description')?.setValue(response.description);
+            this.jobForm.get('benefits')?.setValue(response.benefits);
+            this.jobForm.get('deadline')?.setValue(response.deadline);
+            this.jobForm.get('work_type')?.setValue(response.work_type);
+            this.jobForm.get('location_id')?.setValue(this.getMappedLocationId(response.location));
+            this.jobForm.get('skills')?.setValue(response.skills);
+            this.jobForm.get('categories')?.setValue(response.categories);
+            this.jobForm.get('salary_from')?.setValue(response.salary_from);
+            this.jobForm.get('salary_to')?.setValue(response.salary_to);
+            this.jobForm.get('experience_level')?.setValue(response.experience_level);
+            this.jobForm.get('images')?.setValue(response.images);
+          });    
+        }
+        
       },
       error: (error) => {
         console.error('Error loading locations', error);
       }
     });
 
-    this.jobService.getJobById(this.jobId).subscribe((response:any)=>{
-      this.jobForm.get('job_title')?.setValue(response.job_title);
-      this.jobForm.get('description')?.setValue(response.description);
-      this.jobForm.get('benefits')?.setValue(response.benefits);
-      this.jobForm.get('deadline')?.setValue(response.deadline);
-      this.jobForm.get('work_type')?.setValue(response.work_type);
-      this.jobForm.get('location_id')?.setValue(response.location_id);
-      this.jobForm.get('skills')?.setValue(response.skills);
-      this.jobForm.get('categories')?.setValue(response.categories);
-      this.jobForm.get('salary_from')?.setValue(response.salary_from);
-      this.jobForm.get('salary_to')?.setValue(response.salary_to);
-      this.jobForm.get('experience_level')?.setValue(response.experience_level);
-      this.jobForm.get('images')?.setValue(response.images);
-    })
+    
+
   }
 
   // Getter methods for each form control
@@ -86,6 +100,10 @@ export class JobFormComponent implements OnInit {
 
   get location_id() {
     return this.jobForm.get('location_id');
+  }
+
+  getMappedLocationId(location:string){
+    return this.locations.find(city=>city.name == location).id;
   }
 
   get skills() {
@@ -119,6 +137,7 @@ export class JobFormComponent implements OnInit {
   onSelectedOptionsChange(controlName: string, selectedValues: any[]) {
     this.jobForm.get(controlName)?.setValue(selectedValues);
   }
+
   submit() {
     this.jobForm.markAllAsTouched();
     if (this.jobForm.invalid) {
@@ -136,6 +155,9 @@ export class JobFormComponent implements OnInit {
     formData.append('salary_from', this.jobForm.get('salary_from')?.value);
     formData.append('salary_to', this.jobForm.get('salary_to')?.value);
     formData.append('experience_level', this.jobForm.get('experience_level')?.value);
+
+    // console.log("after const formData", formData);
+    
   
     const skills = this.jobForm.get('skills')?.value;
     if (Array.isArray(skills)) {
@@ -161,7 +183,7 @@ export class JobFormComponent implements OnInit {
     this.selectedFiles.forEach((file, i) => {
       formData.append(`images[${i}]`, file, file.name);
     });
-    
+
     this.formSubmit.emit(formData);
   }
   

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, viewChild } from '@angular/core';
 import { JobFormComponent } from '../../components/job-form/job-form.component';
 import { ActivatedRoute } from '@angular/router';
+import { EmployerService } from '../../services/employer.service';
 
 
 @Component({
@@ -13,10 +14,25 @@ import { ActivatedRoute } from '@angular/router';
 export class EditJobPostComponent implements OnInit 
 {
   id!:any;
-  constructor(private route: ActivatedRoute) { }
+  @ViewChild (JobFormComponent) jobFormComponent!:JobFormComponent;
+  constructor(private route: ActivatedRoute, private employerService: EmployerService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
 
+  }
+
+  onFormSubmitEdit(formData: any) {
+    this.employerService.updateJob(this.id,formData).subscribe(
+      (response) => {
+        console.log('Post Updated Successfully', response);
+      },
+      (error) => {
+        console.error('Post failed to update', error);
+      }
+    );
+
+
+    // console.log('Form Data received from JobFormComponent:', formData);
   }
 }

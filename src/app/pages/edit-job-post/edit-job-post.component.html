@@ -2,5 +2,5 @@
     <div class="edit_head">
         <h2>Edit a Job Post</h2>
     </div>
-    <app-job-form page = 'edit' [jobId]="id"></app-job-form>
+    <app-job-form page = 'edit' [jobId]="id" [isEdit]="true" (formSubmit)="onFormSubmitEdit($event)"></app-job-form>
 </div>
