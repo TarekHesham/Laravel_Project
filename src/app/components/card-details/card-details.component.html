@@ -68,9 +68,12 @@
         </div>
 
         <div class="details col-lg-4 d-flex flex-column align-items-center">
-            <div class="mb-4">
-                <a class="btn btn-success w-100" [routerLink]="['/apply-for-job', job.slug]">Apply For This Job</a>
-            </div>
+            @if (user.role === 'candidate') {
+                <div class="mb-4">
+                    <a class="btn btn-success w-100" [routerLink]="['/apply-for-job', job.slug]">Apply For This Job</a>
+                </div>
+            }
+
             <div class="styling p-3 w-100 rounded-2">
                 <p class="fw-lighter">Job Location:</p>
                 <p>{{job.location}}</p>

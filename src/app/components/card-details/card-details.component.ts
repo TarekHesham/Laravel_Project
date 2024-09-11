@@ -5,6 +5,7 @@ import { CandidateService } from '../../services/candidate.service';
 import { JobService } from '../../services/job.service';
 import { DatePipe } from '@angular/common';
 import { GlobalService } from '../../services/global.service';
+import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-card-details',
@@ -18,6 +19,7 @@ export class CardDetailsComponent {
 
   job: any;
   categories: any[] = [];
+  user: User = JSON.parse(localStorage.getItem('user') || '{}');
 
   constructor(
     private jobService: JobService,
