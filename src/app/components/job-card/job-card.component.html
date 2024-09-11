@@ -1,12 +1,15 @@
 <div class="job-card p-4">
     <div class="card-header">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Company Logo" class="logo">
+        <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Company Logo" class="logo"> -->
         <!-- Posted at -->
         <span class="date">{{job.date_posted}}</span>
     </div>
 
     <h3 class="job-title">{{job.job_title}}</h3>
-    <a routerLink="/applications" class="replies">{{job.applications}} replies</a>
+
+    @if (page == 'employer_profile'){
+        <a [routerLink]="['/applications', job.slug]" class="replies">{{job.applications}} replies</a>
+    }
 
     <div class="skills">
         @for (skill of job.skills; track $index) {
@@ -20,10 +23,14 @@
     </p>
 
     @if(page == 'employer_profile'){
-        <div class="card-buttons">
-            <button class="btn btn-success" [routerLink]="['/edit-post', job.slug]">Edit</button>
-            <button class="btn btn-danger">Cancel</button>
-        </div>
+        @if (job.status !== 'closed'){
+            <div class="card-buttons">
+                <button class="btn btn-success" [routerLink]="['/edit-post', job.id]">Edit</button>
+                <button class="btn btn-danger" (click)="cancelJobPost(job.id)">Cancel</button>
+            </div>
+        } @else {
+            <span class="text-danger">Closed</span>
+        }
     }
     @else if (page == 'home_posts') {
         <div class="card-buttons">

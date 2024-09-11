@@ -15,16 +15,26 @@ export class EmployerService {
     return this.http.get(`${this.baseUrl}/employer/jobs`, this.getAuthHeaders());
   }
 
+  getApplicationsOnJob(slug: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/job/${slug}/applications`, this.getAuthHeaders());
+  }
+
   createJob(jobData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/jobs`, jobData, this.getAuthHeaders());
   }
 
   updateJob(jobId: number, jobData: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/jobs/${jobId}`, jobData, this.getAuthHeaders());
+    return this.http.post(`${this.baseUrl}/jobs/${jobId}`, jobData, this.getAuthHeaders());
   }
 
   cancelJob(jobId: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/employer/${jobId}/cancel`, this.getAuthHeaders());
+    return this.http.post(`${this.baseUrl}/employer/${jobId}/cancel`, {},this.getAuthHeaders());
+  }
+  acceptApplication(applicationId: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}/application/${applicationId}/accept`, {},this.getAuthHeaders());
+  }
+  rejectApplication(applicationId: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}/application/${applicationId}/reject`, {},this.getAuthHeaders());
   }
 
   private getAuthHeaders(): { headers: HttpHeaders } {

@@ -1,42 +1,53 @@
-<form action="" class="job_form" enctype="multipart/form-data" method="post">
+
+<form [formGroup]="jobForm" class="job_form" enctype="multipart/form-data" (ngSubmit)="submit()">
     <div class="mb-3">
         <label for="job_title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="job_title" name="job_title">
-    </div>
-    <div class="mb-3">
-        <label for="companyName" class="form-label">Company</label>
-        <input type="text" class="form-control" id="companyName" name="companyName">
+        <input type="text" class="form-control" id="job_title" formControlName="job_title">
+
+            <!-- validation -->
+            @if (job_title?.touched && job_title?.hasError('required')){
+            <div class="alert alert-danger  p-2">
+                <span>Job Title is Required</span>
+            </div>
+            }
     </div>
 
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+        <textarea class="form-control" id="description" rows="3"  formControlName="description"></textarea>
+
+        <!-- validation -->
+        @if (description?.touched && description?.hasError('required')){
+            <div class="alert alert-danger  p-2">
+                <span>Description is Required</span>
+            </div>
+            }
     </div>
 
     <div class="mb-3">
-        <label for="benefits" class="form-label">Job Benefits</label>
-        <app-multi-select options_type ="benefits"></app-multi-select>
+        <label  class="form-label">Job Benefits</label>
+        <app-multi-select options_type ="benefits" (selectedOptions)="onSelectedOptionsChange('benefits', $event)" [jobId]="jobId" [initialOptions]="initialBenefits"></app-multi-select>
     </div>
 
     <div class="row">
-        <div class="mb-3 col-6">
+        <div class="mb-3 col-12 col-md-6">
             <label for="deadline" class="form-label">Application Deadline</label>
-            <input type="date" class="form-control" id="deadline" name="deadline">
+            <input type="datetime-local" class="form-control" id="deadline"  formControlName="deadline">
         </div>
-        <div class="mb-3 col-6">
+        <div class="mb-3 col-12 col-md-6">
             <label class="form-label">Work Type</label>
-            <select class="form-select" name="work_type">
-                <option selected>Select type from menu</option>
-                <option value="Remote">Remote</option>
-                <option value="On-site">On-site</option>
-                <option value="Hybrid">Hybrid</option>
+            <select class="form-select" name="work_type" formControlName="work_type">
+                <option selected disabled>Select type from menu</option>
+                <option value="remote">Remote</option>
+                <option value="onsite">On-site</option>
+                <option value="hybrid">Hybrid</option>
             </select>
         </div>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Location</label>
-        <select class="form-select" name="location">
+        <select class="form-select" name="location_id" formControlName="location_id">
             <option selected disabled>Select location from menu</option>
 
             @for (location of locations; track location.id){
@@ -49,85 +60,56 @@
     <!-- Skills -->
     <div class="mb-3">
         <label class="form-label main_label">Skills</label>
-        <div class="row px-3">
-            <div class="form-check col-6">
-                <input class="form-check-input" type="checkbox" id="HTML" value="HTML">
-                <label class="form-check-label" for="HTML">HTML</label>
-            </div>
-            <div class="form-check col-6">
-                <input class="form-check-input" type="checkbox" id="CSS3" value="CSS3">
-                <label class="form-check-label" for="CSS3">CSS3</label>
-            </div>
-        </div>
-        <div class="row px-3">
-            <div class="form-check col-6">
-                <input class="form-check-input" type="checkbox" id="JavaScript" value="JavaScript">
-                <label class="form-check-label" for="JavaScript">JavaScript</label>
-            </div>
-            <div class="form-check col-6">
-                <input class="form-check-input" type="checkbox" id="Angular" value="Angular">
-                <label class="form-check-label" for="Angular">Angular</label>
-            </div>
-        </div>
-        <div class="row px-3">
-            <div class="form-check col-6">
-                <input class="form-check-input" type="checkbox" id="PHP" value="PHP">
-                <label class="form-check-label" for="PHP">PHP</label>
-            </div>
-            <div class="form-check col-6">
-                <input class="form-check-input" type="checkbox" id="Laravel" value="Laravel">
-                <label class="form-check-label" for="Laravel">Laravel</label>
-            </div>
-        </div>
+        <app-multi-select options_type ="skills" (selectedOptions)="onSelectedOptionsChange('skills', $event)" [jobId]="jobId" [initialOptions]="initialSkills"></app-multi-select>
     </div>
 
     <!-- Categories -->
     <div class="mb-3">
         <label class="form-label main_label">Category</label>
-        <app-multi-select options_type ="categories"></app-multi-select>
+        <app-multi-select options_type ="categories" (selectedOptions)="onSelectedOptionsChange('categories', $event)" [jobId]="jobId" [initialOptions]="initialCategories"></app-multi-select>
     </div>
 
     <div class="row">
-        <div class="mb-3 col-6">
+        <div class="mb-3 col-12 col-md-6">
             <label for="salary_from" class="form-label">Salary From</label>
-            <input type="number" class="form-control" id="salary_from" name="salary_from">
+            <input type="number" class="form-control" id="salary_from" name="salary_from" formControlName="salary_from">
         </div>
-        <div class="mb-3 col-6">
+        <div class="mb-3 col-12 col-md-6">
             <label for="salary_to" class="form-label">Salary To</label>
-            <input type="number" class="form-control" id="salary_to" name="salary_to">
+            <input type="number" class="form-control" id="salary_to" name="salary_to" formControlName="salary_to">
         </div>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Experience Level</label>
-        <select class="form-select" name="experience_level">
-            <option selected>Select experience level from menu</option>
+        <select class="form-select" name="experience_level" formControlName="experience_level">
+            <option selected disabled>Select experience level from menu</option>
             <option value="Fresh">Fresh</option>
             <option value="Junior">Junior</option>
             <option value="Senior">Senior</option>
         </select>
+        <!-- validation -->
+        @if (experience_level?.touched && experience_level?.hasError('required')){
+            <div class="alert alert-danger p-2">
+                <span>Experience level is Required</span>
+            </div>
+            }
     </div>
 
     <div class="mb-3">
-        <label for="employer_images" class="form-label">Company logo</label>
-        <input type="file" class="form-control" id="employer_images" name="employer_images">
+        <label class="form-label">Branding Elements</label>
+        <input type="file" class="form-control" multiple formControlName="images" name="images" (change)="onFileChange($event)">
     </div>
 
-    <div class="mb-3">
-        <label for="employer_images" class="form-label">Branding Elements</label>
-        <input type="file" class="form-control" id="employer_images" name="employer_images">
-    </div>
-
-    @if(page == 'create'){
-    <div class="d-grid gap-2 col-6 mx-auto">
-        <button class="btn btn-primary" type="submit">Submit</button>
-    </div>
+    @if(page == 'edit'){
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-success" type="submit">Update</button>
+        </div>
     }
-    @else if (page == 'edit') {
-    <div class="d-grid gap-2 col-6 mx-auto">
-        <!-- call function in job form -->
-        <button class="btn btn-success" type="submit">Submit</button>
-    </div>
+    @else if (page == 'create') {
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
     }
 
 </form>

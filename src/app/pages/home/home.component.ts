@@ -40,6 +40,8 @@ export class HomeComponent {
         this.categories = data;
       }
     );
+
+    this.submit();
   }
   submit() {
     this.globalService.search({
@@ -52,7 +54,7 @@ export class HomeComponent {
       created_at: this.searchForm.value['datePosted'],
     }).subscribe((response) => {
       this.jobs = response;
-      console.log(this.jobs[0]);
+      console.log(this.jobs);
     });
   }
 
