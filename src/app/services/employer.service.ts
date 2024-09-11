@@ -20,7 +20,7 @@ export class EmployerService {
   }
 
   updateJob(jobId: number, jobData: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/jobs/${jobId}`, jobData, this.getAuthHeaders());
+    return this.http.post(`${this.baseUrl}/jobs/${jobId}`, jobData, this.getAuthHeaders());
   }
 
   cancelJob(jobId: number): Observable<any> {

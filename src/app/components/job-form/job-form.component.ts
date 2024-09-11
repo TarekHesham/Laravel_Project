@@ -63,7 +63,6 @@ export class JobFormComponent implements OnInit {
             this.jobForm.get('salary_from')?.setValue(response.salary_from);
             this.jobForm.get('salary_to')?.setValue(response.salary_to);
             this.jobForm.get('experience_level')?.setValue(response.experience_level);
-            this.jobForm.get('images')?.setValue(response.images);
           });
         }
 
@@ -162,21 +161,21 @@ export class JobFormComponent implements OnInit {
     const skills = this.jobForm.get('skills')?.value;
     if (Array.isArray(skills)) {
       skills.forEach((skill, index) => {
-        formData.append(`skills[${index}]`, skill);
+        formData.append(`skills[${index}]`, skill.id ? skill.id : skill);
       });
     }
 
     const benefits = this.jobForm.get('benefits')?.value;
     if (Array.isArray(benefits)) {
       benefits.forEach((benefit, index) => {
-        formData.append(`benefits[${index}]`, benefit);
+        formData.append(`benefits[${index}]`, benefit.id ? benefit.id : benefit);
       });
     }
 
     const categories = this.jobForm.get('categories')?.value;
     if (Array.isArray(categories)) {
       categories.forEach((category, index) => {
-        formData.append(`categories[${index}]`, category);
+        formData.append(`categories[${index}]`, category.id ? category.id : category);
       });
     }
 
