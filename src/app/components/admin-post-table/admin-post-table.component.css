@@ -4,7 +4,7 @@
 }
 .grid {
     display: grid;
-    grid-template-columns: 1fr repeat(6, max-content);
+    grid-template-columns: 1fr repeat(5, max-content);
     column-gap: 2rem;
     overflow-x: auto;
 }

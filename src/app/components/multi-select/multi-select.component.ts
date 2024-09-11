@@ -36,7 +36,7 @@ export class MultiSelectComponent implements OnInit {
               placeholder: true,
               placeholderValue: 'Select options from menu',
             };
-            
+
             if (selectElement) new Choices(selectElement, config);
 
             selectElement.addEventListener('change', () => {
@@ -60,8 +60,8 @@ export class MultiSelectComponent implements OnInit {
   getJob(){
     this.jobService.getJobById(this.jobId).subscribe((response:any)=>{
       this.initialOptions = response[this.options_type].map((option:any)=>option.id);
-    });    
-    
+    });
+
   }
 
   isSelected(optionId: number): boolean {

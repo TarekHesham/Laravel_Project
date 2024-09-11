@@ -14,7 +14,7 @@ import { JobService } from '../../services/job.service';
 })
 export class JobFormComponent implements OnInit {
   @Input() page = '';
-  @Output() formSubmit = new EventEmitter<any>();  
+  @Output() formSubmit = new EventEmitter<any>();
   locations: any[] = [];
   initialSkills !: any[];
   initialCategories !: any[];
@@ -47,11 +47,11 @@ export class JobFormComponent implements OnInit {
 
         if (this.isEdit){
           this.jobService.getJobById(this.jobId).subscribe((response:any)=>{
-  
+
             this.initialSkills = response.skills.map((skill:any)=>skill.id);
             this.initialCategories = response.categories.map((category:any)=>category.id);
             this.initialBenefits = response.benefits.map((benefit:any)=>benefit.id);
-  
+
             this.jobForm.get('job_title')?.setValue(response.job_title);
             this.jobForm.get('description')?.setValue(response.description);
             this.jobForm.get('benefits')?.setValue(response.benefits);
@@ -64,16 +64,16 @@ export class JobFormComponent implements OnInit {
             this.jobForm.get('salary_to')?.setValue(response.salary_to);
             this.jobForm.get('experience_level')?.setValue(response.experience_level);
             this.jobForm.get('images')?.setValue(response.images);
-          });    
+          });
         }
-        
+
       },
       error: (error) => {
         console.error('Error loading locations', error);
       }
     });
 
-    
+
 
   }
 
@@ -129,7 +129,7 @@ export class JobFormComponent implements OnInit {
   get images() {
     return this.jobForm.get('images');
   }
-  
+
   onFileChange(event: any) {
     const files: FileList = event.target.files;
     this.selectedFiles = Array.from(files);  // تحويل الملفات المختارة إلى مصفوفة
@@ -144,9 +144,9 @@ export class JobFormComponent implements OnInit {
       console.log('Form is invalid');
       return;
     }
-  
+
     const formData = new FormData();
-  
+
     formData.append('job_title', this.jobForm.get('job_title')?.value);
     formData.append('description', this.jobForm.get('description')?.value);
     formData.append('deadline', this.jobForm.get('deadline')?.value);
@@ -157,8 +157,8 @@ export class JobFormComponent implements OnInit {
     formData.append('experience_level', this.jobForm.get('experience_level')?.value);
 
     // console.log("after const formData", formData);
-    
-  
+
+
     const skills = this.jobForm.get('skills')?.value;
     if (Array.isArray(skills)) {
       skills.forEach((skill, index) => {
@@ -172,19 +172,19 @@ export class JobFormComponent implements OnInit {
         formData.append(`benefits[${index}]`, benefit);
       });
     }
-  
+
     const categories = this.jobForm.get('categories')?.value;
     if (Array.isArray(categories)) {
       categories.forEach((category, index) => {
         formData.append(`categories[${index}]`, category);
       });
     }
-  
+
     this.selectedFiles.forEach((file, i) => {
       formData.append(`images[${i}]`, file, file.name);
     });
 
     this.formSubmit.emit(formData);
   }
-  
+
 }

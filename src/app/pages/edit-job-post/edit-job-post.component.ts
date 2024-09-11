@@ -11,7 +11,7 @@ import { EmployerService } from '../../services/employer.service';
   templateUrl: './edit-job-post.component.html',
   styleUrl: './edit-job-post.component.css'
 })
-export class EditJobPostComponent implements OnInit 
+export class EditJobPostComponent implements OnInit
 {
   id!:any;
   @ViewChild (JobFormComponent) jobFormComponent!:JobFormComponent;

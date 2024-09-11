@@ -12,8 +12,4 @@ export class JobCardComponent {
   @Input() job !: any;
   @Input() page = '';
 
-  ngOnInit(){
-    // console.log(this.job);
-  }
-
 }

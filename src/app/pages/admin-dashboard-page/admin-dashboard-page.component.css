@@ -9,6 +9,11 @@ main {
     min-height: calc(100dvh - 57px);
     overflow: auto;
 }
+.content {
+    max-width: 100dvw;
+    min-height: 100dvh;
+    overflow: auto;
+}
 @media (max-width: 768px) { 
     main {
         grid-template-columns: 1fr;

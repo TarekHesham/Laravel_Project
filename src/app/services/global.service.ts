@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class GlobalService {
   private baseUrl = 'http://127.0.0.1:8000/api';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   autoComplete(query: string, type: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/search/autocomplete?query=${query}&searchtype=${type}`, this.getAuthHeaders());
@@ -19,15 +20,9 @@ export class GlobalService {
   }
   
   search(filters: { [key: string]: any }): Observable<any> {
-    // Create query string
-    // console.log(filters);
-    
-    const queryParams = new HttpParams();
-    Object.keys(filters).forEach((key: string) => queryParams.set(key, filters[key]));
-
     return this.http.get(`${this.baseUrl}/search`, {
       headers: this.getAuthHeaders()?.headers,
-      params: queryParams
+      params: filters
     });
   }
 
@@ -39,11 +34,18 @@ export class GlobalService {
     return this.http.get(`${this.baseUrl}/skills`, this.getAuthHeaders());
   }
 
-  private getAuthHeaders(): { headers: HttpHeaders } | undefined {
+  categories(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/categories`, this.getAuthHeaders());
+  }
+
+  private getAuthHeaders(): { headers: HttpHeaders } {
     const token = localStorage.getItem('token');
     if (!token) {
+      // Token is missing, handle this case appropriately
+      this.router.navigate(['/login']);
       throw new Error('Missing token...');
     }
-    return token ? { headers: new HttpHeaders({ 'Authorization': token }) } : undefined;
+
+    return { headers: new HttpHeaders({ 'Authorization': `Bearer ${token}` }) };
   }
 }
