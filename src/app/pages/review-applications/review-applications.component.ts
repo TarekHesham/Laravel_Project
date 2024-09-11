@@ -15,7 +15,7 @@ export class ReviewApplicationsComponent {
 
   public job: any;
   constructor(private employerService:EmployerService, private route: ActivatedRoute){}
-
+  realLifeData!: any;
   ngOnInit(){
     this.route.params.subscribe(params => {
       const slug = params ['slug'];
@@ -26,7 +26,7 @@ export class ReviewApplicationsComponent {
       }
       );
 
-      setInterval(() => {
+      this.realLifeData = setInterval(() => {
         this.employerService.getApplicationsOnJob(slug).subscribe(
           (response) => {
             if (this.job !== response) this.job = response;
@@ -38,7 +38,11 @@ export class ReviewApplicationsComponent {
       }, 3000);
     });
   }
-
+  ngOnDestroy(): void {
+    if (this.realLifeData) {
+      clearInterval(this.realLifeData);
+    }
+  }
   applicationState(id: number, action: string) {
     if (action === 'accept') {
       this.employerService.acceptApplication(id).subscribe(

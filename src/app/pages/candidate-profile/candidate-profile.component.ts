@@ -19,12 +19,17 @@ export class CandidateProfileComponent implements OnInit {
     private jobService: JobService,
     private authService: AuthService
   ) { }
+  realLifeData!: any;
   ngOnInit(): void {
     this.getCandidateData();
     console.log(this.candidate);
     this.candidateApplications();
   }
-
+  ngOnDestroy(): void {
+    if (this.realLifeData) {
+      clearInterval(this.realLifeData);
+    }
+  }
   getCandidateData() {
     this.authService.getUser()
       .subscribe(
@@ -45,7 +50,7 @@ export class CandidateProfileComponent implements OnInit {
         },
         (error) => console.error(error)
       );
-    setInterval(() => {
+    this.realLifeData = setInterval(() => {
       this.candidateService.getApplications()
       .subscribe(
         (data) => {
