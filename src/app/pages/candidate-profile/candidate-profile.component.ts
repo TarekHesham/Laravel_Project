@@ -37,22 +37,30 @@ export class CandidateProfileComponent implements OnInit {
   }
 
   candidateApplications() {
-
     this.candidateService.getApplications()
       .subscribe(
         (data) => {
-          this.jobs = data;
+          if (this.jobs != data) this.jobs = data;
           console.log(this.jobs);
         },
         (error) => console.error(error)
       );
+    setInterval(() => {
+      this.candidateService.getApplications()
+      .subscribe(
+        (data) => {
+          if (this.jobs != data) this.jobs = data;
+          console.log(this.jobs);
+        },
+        (error) => console.error(error)
+      );
+    }, 3000);
   }
 
   cancelJobApplication(applicationId: number) {
     this.candidateService.cancelApplication(applicationId)
       .subscribe(
         (data) => {
-          console.log(data);
           // get the index of the job
           const jobApplication = this.jobs.findIndex((job) => job.application_id === applicationId);
           // remove the job

@@ -20,15 +20,23 @@ export class ReviewApplicationsComponent {
     this.route.params.subscribe(params => {
       const slug = params ['slug'];
       this.employerService.getApplicationsOnJob(slug).subscribe(
-        (response) => {
-          console.log(response);
-          this.job = response;
-      },
+        (response) => this.job = response,
       (error) => {
         console.error('Applications failed to retrive', error);
       }
       );
-    })
+
+      setInterval(() => {
+        this.employerService.getApplicationsOnJob(slug).subscribe(
+          (response) => {
+            if (this.job !== response) this.job = response;
+          },
+          (error) => {
+            console.error('Applications failed to retrive', error);
+          }
+          );
+      }, 3000);
+    });
   }
 
   applicationState(id: number, action: string) {
