@@ -1,24 +1,24 @@
-<div class="job-card p-4">
+<div class="shadow-sm rounded bg-white p-4">
     <div class="card-header">
-        <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Company Logo" class="logo"> -->
-        <!-- Posted at -->
         <span class="date">{{job.date_posted}}</span>
     </div>
 
     <h3 class="job-title">{{job.job_title}}</h3>
 
     @if (page == 'employer_profile'){
-        <a [routerLink]="['/applications', job.slug]" class="replies">{{job.applications}} replies</a>
+        <a [routerLink]="['/applications', job.slug]" class="replies">{{job.applications}} applications</a>
     }
 
     <div class="skills">
         @for (skill of job.skills; track $index) {
-            <span class="skill">{{skill.name}}</span>
+            <span class="skill px-2 py-1 rounded">{{skill.name}}</span>
+        } @empty {
+            <span class="skill px-2 py-1 rounded">No skills required</span>
         }
     </div>
 
     <p class="location">{{job.location}}</p>
-    <p class="description">
+    <p class="description" title="{{job.description}}">
         {{job.description}}
     </p>
 
@@ -34,7 +34,7 @@
     }
     @else if (page == 'home_posts') {
         <div class="card-buttons">
-            <button class="btn btn-success" [routerLink]="['/job-details', job.slug]">More Details</button>
+            <button class="btn btn-primary px-2 py-2 rounded" [routerLink]="['/job-details', job.slug]">More Details</button>
         </div>
     }
 </div>
