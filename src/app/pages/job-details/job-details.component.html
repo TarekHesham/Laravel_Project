@@ -31,33 +31,35 @@
                     </div>
                 </div>
                 <div class="special styling p-3 rounded">
-                    <p class="categories">
+                    <p class="fw-bold">Categories:</p>
+                    <div class="group mb-3">
                         @for (category of job.categories; track $index) {
-                            <span>{{category.name}}</span>
-                            @if($index < job.categories.length - 1) {
-                                | 
-                            
-                            }
+                            <span class="group-item px-2 py-1 rounded border">{{category.name}}</span>
                         }
-                    </p>
-                    <p class="fw-bold">Job Description:</p>
+                        @empty {
+                            <span class="group-item px-2 py-1 rounded border">No Categories</span>
+                        }
+                    </div>
+                    <p class="fw-bold">Description:</p>
                     <p>{{job.description}}</p>
-                    <p class="fw-bold">Job Benefits:</p>
-                    <ul>
+                    <p class="fw-bold">Benefits:</p>
+                    <div class="group mb-3">
                         @for (benefit of job.benefits; track $index) {
-    
-                        <li>{{benefit.name}}</li>
+                            <span class="group-item px-2 py-1 rounded border">{{benefit.name}}</span>
                         }
-    
-                    </ul>
+                        @empty {
+                            <span class="group-item px-2 py-1 rounded border">No Benefits</span>
+                        }
+                    </div>
                     <p class="fw-bold">Skills:</p>
-                    <ul>
+                    <div class="group mb-3">
                         @for (skill of job.skills; track $index){
-    
-                        <li>{{skill.name}}</li>
+                            <span class="group-item px-2 py-1 rounded border">{{skill.name}}</span>
                         }
-    
-                    </ul>
+                        @empty {
+                            <span class="group-item px-2 py-1 rounded border">No Skills</span>
+                        }
+                    </div>
                     <p class="fw-bold">Salary:</p>
                     <p>From {{job.salary_from}} To {{job.salary_to}}</p>
     

@@ -22,13 +22,19 @@ section {
     box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 5%);
     background-color: white;
 }
-.categories {
+.group {
     font-weight: bold;
-    font-size: 1.2rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
-
-.categories span {
-    margin-right: 0.5rem;
+.group-item {
+    display: inline-block;
+    /* background-color: #f0f4ff; */
+    /* border: 1px solid blanchedalmond; */
+    font-size: 0.9rem;
+    color: #555;
+    min-width: fit-content;
 }
 
 @media (max-width: 992px) {
