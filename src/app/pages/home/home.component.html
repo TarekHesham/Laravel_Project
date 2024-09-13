@@ -3,7 +3,7 @@
         <form [formGroup]="searchForm" (ngSubmit)="submit()">
             <div class="form-search">
                 <input type="text" placeholder="search for jobs" class="form-control p-1 rounded border" formControlName="jobTitle">
-                <button class="btn btn-primary p-1">search</button>
+                <button class="btn btn-primary p-2 search_btn">search</button>
             </div>
             <div class="secondary-search mt-2">
                 <select formControlName="location" class="form-select">
@@ -26,7 +26,7 @@
         </form>
     </div>
     <div class="container">
-        <h1 class="display-4">Recent Jobs</h1>
+        <h1 class="display-4 recent_jobs">Recent Jobs</h1>
         <div class="jobs py-4">
             @for (job of jobs; track $index) {
                 <app-job-card [job]="job"  page="home_posts"></app-job-card>

@@ -1,4 +1,4 @@
-<div class="shadow-sm rounded bg-white p-4">
+<div class="shadow-sm rounded bg-white p-4 job_card">
     <div class="card-header">
         <span class="date">{{job.date_posted}}</span>
     </div>
@@ -34,7 +34,7 @@
     }
     @else if (page == 'home_posts') {
         <div class="card-buttons">
-            <button class="btn btn-primary px-2 py-2 rounded" [routerLink]="['/job-details', job.slug]">More Details</button>
+            <button class="btn btn-primary px-2 py-2 rounded details_btn" [routerLink]="['/job-details', job.slug]">More Details</button>
         </div>
     }
 </div>

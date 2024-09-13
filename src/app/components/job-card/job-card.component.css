@@ -41,9 +41,9 @@
 
 .skill {
     display: inline-block;
-    background-color: #f0f4ff;
+    background-color: #0091AD;
     font-size: 0.8rem;
-    color: #555;
+    color: white;
     min-width: fit-content;
 }
 
@@ -75,4 +75,12 @@
 }
 .skills, .job-title, .location, .description::first-letter {
     text-transform: capitalize;
+}
+
+.details_btn{
+    background-color: #723C70;
+}
+
+.details_btn:hover{
+    background-color: #0091AD;
 }

@@ -20,3 +20,13 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
 }
+
+.recent_jobs{
+    color: #B7094C;
+}
+
+.search_btn{
+    background-color: #723C70;
+    border: #723C70;
+    padding: 10px;
+}
