@@ -13,19 +13,26 @@ h1 {
     margin-bottom: 20px;
 }
 
-table {
+.table {
     width: 100%;
     border-collapse: collapse;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow-x:hidden;
 }
 
+
 thead {
-    background-color: #f0f4f7;
+    /* background-color: #f0f4f7; */
+    white-space: nowrap; 
 }
 
 th, td {
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    white-space: nowrap; 
 }
 
 .applied {
@@ -33,6 +40,9 @@ th, td {
     background-color: #3b82f6;
 }
 
+.actions{
+    display: flex;
+}
 
 .actions button {
     padding: 8px 12px;
@@ -57,8 +67,9 @@ th, td {
     opacity: 0.8;
 }
 
+
 /* Responsive Styling */
-@media (max-width: 768px) {
+@media (max-width: 1025px) {
     .container {
         width: 100%;
         padding: 10px;
@@ -96,14 +107,5 @@ th, td {
         font-weight: bold;
         text-transform: uppercase;
         color: #333;
-    }
-
-    .actions {
-        display: flex;
-        justify-content: flex;
-    }
-
-    .actions button {
-        margin-right: 5px;
     }
 }
