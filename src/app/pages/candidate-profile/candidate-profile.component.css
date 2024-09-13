@@ -49,3 +49,46 @@ img {
     background-color: #1780A1;
     color: white;
 }
+
+
+/* Responsive */
+@media (max-width: 758px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+        text-transform: none !important;
+    }
+
+    table {
+        border: none;
+    }
+
+    thead tr {
+        display: none;
+    }
+
+    tbody tr {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        background-color: #f9f9f9;
+    }
+
+    tbody tr td {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    tbody tr td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #333;
+    }
+
+    .profile, .info{
+        width: 70%;
+    }
+}

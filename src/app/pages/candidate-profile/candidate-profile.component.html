@@ -30,11 +30,11 @@
         @if (jobs.length > 0) {
           @for (job of jobs; track job.id) {
             <tr >
-              <td>{{ $index + 1 }}</td>
-              <td>{{ job.job_title }}</td>
-              <td>{{ job.job_description }}</td>
-              <td>{{ job.job_type }}</td>
-              <td>{{ job.status }}</td>
+              <td data-label="ID">{{ $index + 1 }}</td>
+              <td data-label="Job Title">{{ job.job_title }}</td>
+              <td data-label="Description">{{ job.job_description }}</td>
+              <td data-label="Job Type">{{ job.job_type }}</td>
+              <td data-label="Status">{{ job.status }}</td>
               <td>
                 <button (click)="cancelJobApplication(job.application_id)" class="btn btn-danger">Cancel</button>
               </td>
