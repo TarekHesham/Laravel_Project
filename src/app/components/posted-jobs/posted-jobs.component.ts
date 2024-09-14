@@ -16,10 +16,12 @@ export class PostedJobsComponent implements OnInit {
 
 
   ngOnInit(){
+    document.querySelector('.loader_section')?.classList.remove('d-none');
     this.employerService.getJobs().subscribe(
       (response) => {
         console.log('jobs arrived Successfully', response);
         this.myJobs = response;
+        document.querySelector('.loader_section')?.classList.add('d-none');
       },
       (error) => {
         console.error('jobs failed to arrive', error);

@@ -2,7 +2,6 @@ import { Component, input } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -18,10 +17,10 @@ export class LoginPageComponent {
     rememberMe: new FormControl(false),
   });
 
-  constructor(private authService: AuthService,
-    private router: Router
-  ) {}
-  errorMessages = null;
+  constructor(private authService: AuthService) {
+    document.querySelector('.loader_section')?.classList.add('d-none');
+  }
+  errorMessages!: string;
   get email() {
     return this.loginForm.controls['email'];    
   }
@@ -39,7 +38,7 @@ export class LoginPageComponent {
     this.authService.login(this.loginForm.value)
     .subscribe({
       error: (error) => {
-        this.errorMessages = error.error;
+        this.errorMessages = 'Invalid credentials';
         console.log("error", error);
       }
     });

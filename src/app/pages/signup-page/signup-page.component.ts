@@ -57,7 +57,9 @@ export class SignupPageComponent {
   }
   constructor(private authService: AuthService,
     private router: Router
-  ) {}
+  ) {
+    document.querySelector('.loader_section')?.classList.add('d-none');
+  }
   errorMessages = null;
   submit() {
     this.signupForm.markAllAsTouched();

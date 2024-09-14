@@ -11,7 +11,6 @@
   border-top-color: #455e89;
   animation: spin 1s linear infinite;
   margin: 0 auto;
-  display: block;
 }
 
 @keyframes spin {
