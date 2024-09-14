@@ -1,2 +1,93 @@
-<app-card-details></app-card-details>
-
+@if (job) {
+    <section class="container mt-5">
+        <div class="images {{job.images.length > 0 ? 'border' : ''}}">
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @for (image of job.images; track $index) {
+                    <div class="carousel-item {{$index == 0 ? 'active' : '' }}">
+                        <img [src]="image.image" class="d-block w-100" alt="...">
+                    </div>
+                    }
+                </div>
+                @if(job.images.length > 1) {
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 mb-4">
+                <div class="border styling p-3 mb-4 rounded">
+                    <div class="d-flex gap-3 align-items-center ">
+                        <h1 class="text-center text-capitalize w-100">{{job.job_title}}</h1>
+                    </div>
+                </div>
+                <div class="special styling p-3 rounded">
+                    <p class="fw-bold">Categories:</p>
+                    <div class="group mb-3">
+                        @for (category of job.categories; track $index) {
+                            <span class="group-item px-2 py-1 rounded border">{{category.name}}</span>
+                        }
+                        @empty {
+                            <span class="group-item px-2 py-1 rounded border">No Categories</span>
+                        }
+                    </div>
+                    <p class="fw-bold">Description:</p>
+                    <p>{{job.description}}</p>
+                    <p class="fw-bold">Benefits:</p>
+                    <div class="group mb-3">
+                        @for (benefit of job.benefits; track $index) {
+                            <span class="group-item px-2 py-1 rounded border">{{benefit.name}}</span>
+                        }
+                        @empty {
+                            <span class="group-item px-2 py-1 rounded border">No Benefits</span>
+                        }
+                    </div>
+                    <p class="fw-bold">Skills:</p>
+                    <div class="group mb-3">
+                        @for (skill of job.skills; track $index){
+                            <span class="group-item px-2 py-1 rounded border">{{skill.name}}</span>
+                        }
+                        @empty {
+                            <span class="group-item px-2 py-1 rounded border">No Skills</span>
+                        }
+                    </div>
+                    <p class="fw-bold">Salary:</p>
+                    <p>From {{job.salary_from}} To {{job.salary_to}}</p>
+    
+                    <p class="fw-bold">Deadline:</p>
+                    <p>{{job.deadline | date}}</p>
+                </div>
+            </div>
+    
+            <div class="details col-lg-4 d-flex flex-column align-items-center">
+                @if (user.role === 'candidate') {
+                    <div class="mb-4">
+                        <a class="btn btn-success w-100" [routerLink]="['/apply-for-job', job.slug]">Apply For This Job</a>
+                    </div>
+                }
+    
+                <div class="styling p-3 w-100 rounded-2 text-capitalize">
+                    <p class="fw-lighter">Job Location:</p>
+                    <p>{{job.location}}</p>
+                    <p class="fw-lighter">Employment Type:</p>
+                    <p>{{job.work_type}}</p>
+                    <p class="fw-lighter">Minimum Experience:</p>
+                    <p>{{job.experience_level}}</p>
+                </div>
+            </div>
+        </div>
+        <!-- Comments Section-->
+        <!-- Display Comments -->
+        <app-comments [jobId]="job.id" [comments]="job.comments" class="comment"></app-comments>
+    </section>
+    
+    }

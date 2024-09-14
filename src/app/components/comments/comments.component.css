@@ -1,8 +1,3 @@
-.comments-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
 .comment-box {
     display: flex;
     gap: 1rem;

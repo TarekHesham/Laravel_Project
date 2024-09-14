@@ -25,10 +25,13 @@
             </div>
         </form>
     </div>
-    <div class="jobs p-2">
-        @for (job of jobs; track $index) {
-            <app-job-card [job]="job"  page="home_posts"></app-job-card>
-        }
+    <div class="container">
+        <h1 class="display-4">Recent Jobs</h1>
+        <div class="jobs py-4">
+            @for (job of jobs; track $index) {
+                <app-job-card [job]="job"  page="home_posts"></app-job-card>
+            }
+        </div>
     </div>
 </main>
 
