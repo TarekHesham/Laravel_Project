@@ -17,7 +17,7 @@
 .job-title {
     font-size: 1.2rem;
     margin: 10px 0;
-    color: #333;
+    color: #A01A58;
 }
 
 .replies {
@@ -50,13 +50,13 @@
 
 .location {
     font-size: 0.9rem;
-    color: #888;
+    color:  var(--darkblue);
     margin-bottom: 10px;
 }
 
 .description {
     font-size: 0.9rem;
-    color: #555;
+    color: var(--darkblue);
     line-height: 1.4;
     white-space: nowrap;
     overflow: hidden;
@@ -78,9 +78,14 @@
 }
 
 .details_btn{
-    background-color: #723C70;
+    background-color: var(--purple);
 }
 
 .details_btn:hover{
-    background-color: #0091AD;
+    background-color: var(--lightpurple)
+}
+
+.edit-btn{
+    background-color: var(--purple);
+    color: white;
 }

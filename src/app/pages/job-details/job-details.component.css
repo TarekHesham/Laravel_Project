@@ -1,5 +1,6 @@
 section {
     padding: 2rem;
+    color: var(--purple);
 }
 
 .carousel-inner img {
@@ -34,6 +35,25 @@ section {
     text-transform: capitalize;
     color: #555;
     min-width: fit-content;
+}
+
+.category, .skills, .benefits{
+    background-color: var(--lightblue);
+    color: white;
+}
+
+
+.title{
+    color: var(--darkblue);
+}
+
+.apply-btn{
+    background-color: var(--pink);
+    color: white;
+}
+
+span i{
+    margin: 0 5px;
 }
 
 @media (max-width: 992px) {

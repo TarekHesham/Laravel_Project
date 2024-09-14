@@ -7,7 +7,16 @@
     font-family: "Open Sans", sans-serif;
 }
 
+:root{
+    --darkblue: #455E89;
+    --lightblue: #0091AD;
+    --blue: #2E6F95;
+    --purple: #723C70;
+    --lightpurple: #892B64;
+    --pink: #B7094C;
+    --lightgray: #f4f6f9;
+}
 
 body {
-    background-color: #F9F4F5;
+    background-color: var(--lightgray);
 }

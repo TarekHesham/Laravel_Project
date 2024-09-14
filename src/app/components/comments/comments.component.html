@@ -1,8 +1,10 @@
-<h3 class="comments text-center">Comments</h3>
-<!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Add New Comment
-  </button>
+<div class="d-flex flex-row justify-content-between mt-3">
+  <h3 class="comments">Comments</h3>
+  <!-- Button trigger modal -->
+    <button type="button" class="btn comment-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add New Comment
+    </button>
+</div>
   <div class="comments-container mt-4">
     @for(comment of comments ; track $index) {
       <div class="comment-box">

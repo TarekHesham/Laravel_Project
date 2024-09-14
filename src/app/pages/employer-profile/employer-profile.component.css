@@ -67,8 +67,8 @@ a::before{
 }
 
 a:hover::before, a.active::before, a.active{
-    border-color: blue;
-    color: blue !important;
+    border-color: var(--lightblue);
+    color: var(--lightblue) !important;
 }
 
 h2{

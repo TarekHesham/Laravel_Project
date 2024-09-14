@@ -17,7 +17,10 @@
         }
     </div>
 
-    <p class="location">{{job.location}}</p>
+    <p class="location">
+        <span><i class="fa-solid fa-location-dot"></i></span>
+        {{job.location}}
+    </p>
     <p class="description" title="{{job.description}}">
         {{job.description}}
     </p>
@@ -25,7 +28,7 @@
     @if(page == 'employer_profile'){
         @if (job.status !== 'closed'){
             <div class="card-buttons">
-                <button class="btn btn-success" [routerLink]="['/edit-post', job.id]">Edit</button>
+                <button class="btn edit-btn" [routerLink]="['/edit-post', job.id]">Edit</button>
                 <button class="btn btn-danger" (click)="cancelJobPost(job.id)">Cancel</button>
             </div>
         } @else {
