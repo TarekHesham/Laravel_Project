@@ -30,6 +30,7 @@ export class HomeComponent {
   });
   constructor(private globalService:GlobalService){}
   ngOnInit() {
+    document.querySelector('.loader_section')?.classList.remove('d-none');
     this.globalService.locations().subscribe(
       (data) => {
         this.locations = data;
@@ -55,6 +56,7 @@ export class HomeComponent {
     }).subscribe((response) => {
       this.jobs = response;
       console.log(this.jobs);
+      document.querySelector('.loader_section')?.classList.add('d-none');
     });
   }
 

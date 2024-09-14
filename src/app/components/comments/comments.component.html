@@ -33,13 +33,13 @@
           
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Enter Your Comment</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" #comment></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" #comment (keyup.Enter)="submit.click();" autofocus></textarea>
             </div>
         
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addComment(comment.value)">Add</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addComment(comment.value); comment.value = '';" #submit>Add</button>
       </div>
     </div>
   </div>
