@@ -9,8 +9,11 @@
 }
 
 h1 {
-    font-size: 24px;
     margin-bottom: 20px;
+    font-family: "PT Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--pink);
 }
 
 .table {
@@ -20,6 +23,7 @@ h1 {
     background-color: #fff;
     border-radius: 10px;
     overflow-x:hidden;
+    color: var(--darkblue);
 }
 
 
@@ -33,6 +37,7 @@ th, td {
     text-align: left;
     border-bottom: 1px solid #ddd;
     white-space: nowrap; 
+    color: var(--darkblue);
 }
 
 .applied {
@@ -54,12 +59,12 @@ th, td {
 }
 
 .accept {
-    background-color: #4caf50;
+    background-color: var(--lightblue);
     color: white;
 }
 
 .reject {
-    background-color: #f44336;
+    background-color: var(--pink);
     color: white;
 }
 
