@@ -1,4 +1,4 @@
-<div class="shadow-sm rounded bg-white p-4 job_card">
+<div class="shadow-sm rounded bg-white p-4 job_card" [class.postedJobs]="isPostedJobs">
     <div class="card-header">
         <span class="date">{{job.date_posted}}</span>
     </div>
@@ -29,7 +29,7 @@
         @if (job.status !== 'closed'){
             <div class="card-buttons">
                 <button class="btn edit-btn" [routerLink]="['/edit-post', job.id]">Edit</button>
-                <button class="btn btn-danger" (click)="cancelJobPost(job.id)">Cancel</button>
+                <button class="btn cancel-btn" (click)="cancelJobPost(job.id)">Cancel</button>
             </div>
         } @else {
             <span class="text-danger">Closed</span>

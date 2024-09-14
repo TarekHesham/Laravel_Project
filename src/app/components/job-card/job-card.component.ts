@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { EmployerService } from '../../services/employer.service';
 
@@ -9,9 +9,11 @@ import { EmployerService } from '../../services/employer.service';
   templateUrl: './job-card.component.html',
   styleUrl: './job-card.component.css'
 })
-export class JobCardComponent {
+export class JobCardComponent implements OnInit{
   @Input() job !: any;
   @Input() page = '';
+  isPostedJobs:boolean = false;
+  
 
   constructor(private employerService:EmployerService){}
 
@@ -26,5 +28,10 @@ export class JobCardComponent {
     );
 
   }
+
+  ngOnInit(): void {
+    this.isPostedJobs = (this.page == 'employer_profile');
+  }
+
 
 }

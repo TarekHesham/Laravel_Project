@@ -88,4 +88,20 @@
 .edit-btn{
     background-color: var(--purple);
     color: white;
+    margin: 0 5px;
 }
+
+.cancel-btn{
+    background-color: var(--purple);
+    color: white;
+}
+
+.cancel-btn:hover{
+    background-color: var(--pink);
+}
+
+.postedJobs{
+    background-color: var(--lightgray) !important;
+    margin: 10px 0;
+}
+

@@ -75,6 +75,7 @@ h2{
     font-size: 900;
     font-weight: bold;
     margin-top: 10px;
+    color: var(--lightblue);
 }
 
 @media (max-width: 768px) { 

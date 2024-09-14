@@ -6,3 +6,7 @@
 a{
     color: #F9F4F5 !important;
 }
+
+.dropdown-item{
+    color: var(--darkblue) !important;
+}

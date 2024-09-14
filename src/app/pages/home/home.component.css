@@ -23,7 +23,7 @@
 
 .recent_jobs{
     color: var(--pink);
-    font-family: "Jacques Francois Shadow", serif;
+    font-family: "PT Serif", serif;
     font-weight: 400;
     font-style: normal;
 }
@@ -34,8 +34,3 @@
     padding: 10px;
 }
 
-.jacques-francois-shadow-regular {
-    font-family: "Jacques Francois Shadow", serif;
-    font-weight: 400;
-    font-style: normal;
-}
