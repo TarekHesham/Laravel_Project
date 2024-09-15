@@ -1,8 +1,10 @@
-<h3 class="comments text-center">Comments</h3>
-<!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Add New Comment
-  </button>
+<div class="d-flex flex-row justify-content-between mt-3">
+  <h3 class="comments">Comments</h3>
+  <!-- Button trigger modal -->
+    <button type="button" class="btn comment-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add New Comment
+    </button>
+</div>
   <div class="comments-container mt-4">
     @for(comment of comments ; track $index) {
       <div class="comment-box">
@@ -31,13 +33,13 @@
           
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Enter Your Comment</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" #comment></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" #comment (keyup.Enter)="submit.click();" autofocus></textarea>
             </div>
         
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addComment(comment.value)">Add</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addComment(comment.value); comment.value = '';" #submit>Add</button>
       </div>
     </div>
   </div>

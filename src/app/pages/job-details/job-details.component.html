@@ -27,14 +27,14 @@
             <div class="col-lg-8 mb-4">
                 <div class="border styling p-3 mb-4 rounded">
                     <div class="d-flex gap-3 align-items-center ">
-                        <h1 class="text-center text-capitalize w-100">{{job.job_title}}</h1>
+                        <h1 class="text-center text-capitalize w-100 title">{{job.job_title}}</h1>
                     </div>
                 </div>
                 <div class="special styling p-3 rounded">
                     <p class="fw-bold">Categories:</p>
                     <div class="group mb-3">
                         @for (category of job.categories; track $index) {
-                            <span class="group-item px-2 py-1 rounded border">{{category.name}}</span>
+                            <span class="group-item px-2 py-1 rounded border category">{{category.name}}</span>
                         }
                         @empty {
                             <span class="group-item px-2 py-1 rounded border">No Categories</span>
@@ -45,7 +45,7 @@
                     <p class="fw-bold">Benefits:</p>
                     <div class="group mb-3">
                         @for (benefit of job.benefits; track $index) {
-                            <span class="group-item px-2 py-1 rounded border">{{benefit.name}}</span>
+                            <span class="group-item px-2 py-1 rounded border benefits">{{benefit.name}}</span>
                         }
                         @empty {
                             <span class="group-item px-2 py-1 rounded border">No Benefits</span>
@@ -54,24 +54,26 @@
                     <p class="fw-bold">Skills:</p>
                     <div class="group mb-3">
                         @for (skill of job.skills; track $index){
-                            <span class="group-item px-2 py-1 rounded border">{{skill.name}}</span>
+                            <span class="group-item px-2 py-1 rounded border skills">{{skill.name}}</span>
                         }
                         @empty {
                             <span class="group-item px-2 py-1 rounded border">No Skills</span>
                         }
                     </div>
                     <p class="fw-bold">Salary:</p>
-                    <p>From {{job.salary_from}} To {{job.salary_to}}</p>
-    
+                    <p>From {{job.salary_from}}$ To {{job.salary_to}}$</p>
                     <p class="fw-bold">Deadline:</p>
-                    <p>{{job.deadline | date}}</p>
+                    <p>
+                        <span><i class="fa-solid fa-calendar-xmark"></i></span>
+                        {{job.deadline | date}}
+                    </p>
                 </div>
             </div>
     
             <div class="details col-lg-4 d-flex flex-column align-items-center">
                 @if (user.role === 'candidate') {
                     <div class="mb-4">
-                        <a class="btn btn-success w-100" [routerLink]="['/apply-for-job', job.slug]">Apply For This Job</a>
+                        <a class="btn apply-btn w-100" [routerLink]="['/apply-for-job', job.slug]">Apply For This Job</a>
                     </div>
                 }
     
@@ -89,5 +91,4 @@
         <!-- Display Comments -->
         <app-comments [jobId]="job.id" [comments]="job.comments" class="comment"></app-comments>
     </section>
-    
-    }
+}

@@ -35,13 +35,13 @@ export class AuthService {
           catchError(error => {
             console.error('Error fetching user:', error);
             this.router.navigate(['/login']);
-            return of(null); 
+            return error;
           })).subscribe();
       }),
       catchError(error => {
         console.error('Error fetching token:', error);
         this.router.navigate(['/login']);
-        return of(null); 
+        return error; 
       })
     );
   }

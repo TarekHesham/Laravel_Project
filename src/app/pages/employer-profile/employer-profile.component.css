@@ -66,15 +66,17 @@ a::before{
     margin-right: 5px;
 }
 
-a:hover::before, a.active::before, a.active{
-    border-color: blue;
-    color: blue !important;
+a:hover::before, a.active::before, a.active, a:hover{
+    border-color: var(--lightblue);
+    color: var(--lightblue) !important;
 }
 
 h2{
-    font-size: 900;
-    font-weight: bold;
     margin-top: 10px;
+    color: var(--lightblue);
+    font-family: "PT Serif", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 @media (max-width: 768px) { 

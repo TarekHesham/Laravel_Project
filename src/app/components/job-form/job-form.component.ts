@@ -26,6 +26,7 @@ export class JobFormComponent implements OnInit {
   constructor(private globalService: GlobalService,private jobService:JobService) {}
 
   ngOnInit(): void {
+    document.querySelector('.loader_section')?.classList.remove('d-none');
     this.jobForm = new FormGroup({
       job_title: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
@@ -63,9 +64,12 @@ export class JobFormComponent implements OnInit {
             this.jobForm.get('salary_from')?.setValue(response.salary_from);
             this.jobForm.get('salary_to')?.setValue(response.salary_to);
             this.jobForm.get('experience_level')?.setValue(response.experience_level);
+            
           });
         }
-
+        setTimeout(() => {
+          document.querySelector('.loader_section')?.classList.add('d-none');
+        }, 2000);
       },
       error: (error) => {
         console.error('Error loading locations', error);

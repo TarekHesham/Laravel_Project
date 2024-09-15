@@ -14,16 +14,11 @@ export class CommentsComponent {
 
   @Input() comments: any;
   @Input () jobId: any;
-  constructor(private globalService: GlobalService , private router: Router) { }
+  constructor(private globalService: GlobalService) { }
 
   addComment(data: any): void {
-    console.log(this);
-
     const sendData ={content : data, job_id : this.jobId};
     this.globalService.addComment(sendData).subscribe(data => {
-      console.log(data);
-      // reload comments
-      // this.router.navigate(['/job-details', this.jobId]);
       this.comments.unshift(data.comment);
     }, error => {
       console.log(error);

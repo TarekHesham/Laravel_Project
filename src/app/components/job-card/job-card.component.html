@@ -1,4 +1,4 @@
-<div class="shadow-sm rounded bg-white p-4">
+<div class="shadow-sm rounded bg-white p-4 job_card" [class.postedJobs]="isPostedJobs">
     <div class="card-header">
         <span class="date">{{job.date_posted}}</span>
     </div>
@@ -17,7 +17,10 @@
         }
     </div>
 
-    <p class="location">{{job.location}}</p>
+    <p class="location">
+        <span><i class="fa-solid fa-location-dot"></i></span>
+        {{job.location}}
+    </p>
     <p class="description" title="{{job.description}}">
         {{job.description}}
     </p>
@@ -25,8 +28,8 @@
     @if(page == 'employer_profile'){
         @if (job.status !== 'closed'){
             <div class="card-buttons">
-                <button class="btn btn-success" [routerLink]="['/edit-post', job.id]">Edit</button>
-                <button class="btn btn-danger" (click)="cancelJobPost(job.id)">Cancel</button>
+                <button class="btn edit-btn" [routerLink]="['/edit-post', job.id]">Edit</button>
+                <button class="btn cancel-btn" (click)="cancelJobPost(job.id)">Cancel</button>
             </div>
         } @else {
             <span class="text-danger">Closed</span>
@@ -34,7 +37,7 @@
     }
     @else if (page == 'home_posts') {
         <div class="card-buttons">
-            <button class="btn btn-primary px-2 py-2 rounded" [routerLink]="['/job-details', job.slug]">More Details</button>
+            <button class="btn btn-primary px-2 py-2 rounded details_btn" [routerLink]="['/job-details', job.slug]">More Details</button>
         </div>
     }
 </div>

@@ -1,19 +1,26 @@
 .job_form{
     padding: 3%;
     height: 100%;
+    color: var(--blue);
 }
 
 .main_label{
-    background-color: rgb(170, 172, 174);
+    background-color: var(--lightgray);
     width: 100%;
     padding: 0.3rem;
     text-align: center;
     font-weight: bold;
     border-radius: 5px;
-    color: white;
+    color: var(--blue);
     font-size: large;
 }
 
-.btn-success{
-    background-color: rgb(29, 185, 63) !important;
+.update-btn{
+    background-color: var(--purple);
+    color: white;
+}
+
+.submit-btn{
+    background-color: var(--lightblue);
+    color: white;
 }

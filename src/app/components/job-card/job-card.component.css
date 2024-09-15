@@ -17,7 +17,7 @@
 .job-title {
     font-size: 1.2rem;
     margin: 10px 0;
-    color: #333;
+    color: #A01A58;
 }
 
 .replies {
@@ -41,22 +41,22 @@
 
 .skill {
     display: inline-block;
-    background-color: #f0f4ff;
+    background-color: #0091AD;
     font-size: 0.8rem;
-    color: #555;
+    color: white;
     min-width: fit-content;
 }
 
 
 .location {
     font-size: 0.9rem;
-    color: #888;
+    color:  var(--darkblue);
     margin-bottom: 10px;
 }
 
 .description {
     font-size: 0.9rem;
-    color: #555;
+    color: var(--darkblue);
     line-height: 1.4;
     white-space: nowrap;
     overflow: hidden;
@@ -75,4 +75,48 @@
 }
 .skills, .job-title, .location, .description::first-letter {
     text-transform: capitalize;
+}
+
+.details_btn{
+    background-color: var(--purple);
+}
+
+.details_btn:hover{
+    background-color: var(--lightpurple)
+}
+
+.edit-btn{
+    background-color: var(--purple);
+    color: white;
+    margin: 0 5px;
+}
+
+.cancel-btn{
+    background-color: var(--purple);
+    color: white;
+}
+
+.cancel-btn:hover{
+    background-color: var(--pink);
+}
+
+.postedJobs{
+    background-color: var(--lightgray) !important;
+    margin: 10px 0;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        scale: 0.5;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+.job_card {
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 20%;
 }

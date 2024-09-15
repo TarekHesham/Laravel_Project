@@ -3,7 +3,7 @@
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding: 1rem;
-    background-color: #f9f9f9;
+    background-color: white;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -28,9 +28,19 @@
     margin-bottom: 0.5rem;
 }
 
+.comments{
+
+    color: var(--darkblue);
+}
+
 .comments h3 {
     font-size: 1.8rem;
     margin-bottom: 2rem;
+}
+
+.comment-btn{
+    background-color: var(--darkblue);
+    color: white;
 }
 
 @media (max-width: 576px) {
@@ -42,4 +52,24 @@
     .image img {
         margin: 0 auto;
     }
+}
+
+textarea {
+    resize: none;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        clip-path: inset(100% 100% 0 0);
+    }
+    to {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+}
+.comment-box {
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 15%;
 }
